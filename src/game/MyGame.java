@@ -18,6 +18,7 @@ public class MyGame extends BasicGame{
 		try {
 			player = new Player(100, 100);
 			gameObjects.add(player);
+			setZombie();
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
@@ -41,6 +42,14 @@ public class MyGame extends BasicGame{
 		}
 	}
 	
+	public void setZombie(){
+		try {
+			gameObjects.add(new Zombie(300,300));
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		
+	}
 
 	private Player player;
 	public static List<objects.GameObject> gameObjects = new ArrayList<GameObject>();
