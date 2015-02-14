@@ -2,6 +2,7 @@ package objects;
 
 
 import org.newdawn.slick.*;
+
 import java.util.*;
 
 public class GameObject {
@@ -12,6 +13,11 @@ public class GameObject {
 	protected int speed;
 	private int max_x = 600;
 	private int max_y = 600;
+	protected float angle =0;
+	protected float oldAngle =0;
+	protected float turningAngle =0;
+	private String direction = "up";
+	private String oldDirection;
 
 		
 	public GameObject(Image image, float pos_x2, float pos_y2, int speed) {
@@ -26,17 +32,26 @@ public class GameObject {
 	}
 
 	public void update() {
+		turnObject();
 		
+		oldAngle += turningAngle;
+		if (oldAngle > 360){oldAngle -= 360;}
+		if (oldAngle < -360){oldAngle += 360;}
+		turningAngle=angle;
+
 	}
 
 	protected void moveUp() {
 		// Falls das Bild den Rand überschreitet, dann ganz oben zeichnen!
 		// image.getHeight()/2 -> weil Bild von der Mitte aus gezeichnet wird.
-		if(this.pos_y-speed-image.getHeight()/2 <= 0) {
+		if(this.pos_y-image.getHeight()/2 <= 0) {
 			this.pos_y = image.getHeight()/2;
 		} else {
 			this.pos_y -= speed;
 		}
+		
+		this.oldDirection = this.direction;
+		this.direction="up";
 	}
 
 	protected void moveDown() {
@@ -45,6 +60,8 @@ public class GameObject {
 		} else {
 			this.pos_y += speed;
 		}
+		this.oldDirection = this.direction;
+		this.direction="down";
 	}
 
 	protected void moveLeft() {
@@ -53,6 +70,8 @@ public class GameObject {
 		} else {
 			this.pos_x -= speed;
 		}
+		this.oldDirection = this.direction;
+		this.direction="left";
 	}
 
 	protected void moveRight() {
@@ -61,7 +80,35 @@ public class GameObject {
 		} else {
 			this.pos_x += speed;
 		}
+		this.oldDirection = this.direction;
+		this.direction="right";
 	}
-
+	
+	
+	protected void turnObject(){
+		String od = this.oldDirection;
+		String d  = this.direction;
+		
+		this.angle =0;
+		
+		if (od == "up" && d == "right"){this.angle = 90;}
+		if (od == "right" && d == "down"){this.angle = 90;}
+		if (od == "down" && d == "left"){this.angle  = 90;}
+		if (od == "left" && d == "up"){this.angle  = 90;}
+		
+		if (od == "right" && d == "up"){this.angle  = -90;}
+		if (od == "up" && d == "left"){this.angle = -90;}
+		if (od == "left" && d == "down"){this.angle = -90;}
+		if (od == "down" && d == "right"){this.angle  = -90;}
+		
+		if (od == "left" && d == "right"){this.angle  = 180;}
+		if (od == "right" && d == "left"){this.angle  = -180;}
+		if (od == "up" && d == "down"){this.angle = 180;}
+		if (od == "down" && d == "up"){this.angle = -180;}
+		
+		this.image.rotate(this.angle);
+		
+		
+	}
 	
 }
