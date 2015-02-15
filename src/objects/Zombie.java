@@ -63,8 +63,10 @@ public class Zombie extends GameObject {
 	
 	public void move(float viewAngle){
 		//bewege zombie im winkel zum spielen hin
-		this.pos_y -= (float) Math.cos(Math.toRadians(viewAngle)) * this.speed;
-		this.pos_x += (float) Math.sin(Math.toRadians(viewAngle)) * this.speed; 
+		if(this.pos_x != Player.position.getX() || this.pos_y != Player.position.getY()){
+		this.pos_y -= (float) Math.cos(viewAngle) * this.speed;
+		this.pos_x -= (float) Math.sin(viewAngle) * this.speed;
+		}
 	}
 	
 	public void getBullets(){
