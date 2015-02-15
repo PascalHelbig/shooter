@@ -11,6 +11,7 @@ import org.newdawn.slick.SlickException;
 public class Zombie extends GameObject {
 	float playerX;
 	float playerY;
+	float zombieX;
 	
 	private GameObject[] bullets;
 	
@@ -23,7 +24,8 @@ public class Zombie extends GameObject {
 		move(calculateAngle());
 	}
 	
-	public double calculateDistance(){
+	public double calculateDistanceZombieToPlayer(){
+		//berechne Länge des vektors zwischen spieler und zombie
 		playerX= Player.position.getX();
 	    playerY= Player.position.getY();
 		
@@ -31,20 +33,38 @@ public class Zombie extends GameObject {
 		float diffY= this.pos_y-playerY;
 		
 		double length = Math.sqrt(Math.pow(diffX, 2)+Math.pow(diffY, 2));
+		System.out.println("x: "+length); //passt!
 		return length;
+
+	}
+	
+	public float calculateAnglePoint(){
+		//berechne Länge des vektors zwischen spieler und punkt3
+		zombieX= this.pos_x;
+	    playerY= Player.position.getY();
+		
+		float diffX=zombieX-Player.position.getX();
+		
+		System.out.println("x: "+diffX); //passt!
+		return diffX;
+
 	}
 	
 	public float calculateAngle(){
-		float hypotenuse = Math.abs((float)calculateDistance());
-		float ankathete = Math.abs(this.pos_y-playerY);
+		//berechne winkel zwischen spieler und zombie
+		float hypotenuse = (float)calculateDistanceZombieToPlayer();
+		float gegenkathete = calculateAnglePoint();
 		
-		float angle = ankathete/hypotenuse;
+		float angle = gegenkathete/hypotenuse;
+		//angle=(float)Math.toDegrees(Math.asin(angle)); gibt gradzahl aus (zombie zu spieler winkel)
+		System.out.println("Gegenkathete: "+gegenkathete+" hypotenuse: "+hypotenuse+" angle: "+Math.toDegrees(Math.asin(angle))); //passt
 		return angle;
 	}
 	
 	public void move(float viewAngle){
+		//bewege zombie im winkel zum spielen hin
 		this.pos_y -= (float) Math.cos(Math.toRadians(viewAngle)) * this.speed;
-		this.pos_x += (float) Math.sin(Math.toRadians(viewAngle)) * this.speed;
+		this.pos_x += (float) Math.sin(Math.toRadians(viewAngle)) * this.speed; 
 	}
 	
 	public void getBullets(){
