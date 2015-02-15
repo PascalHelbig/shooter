@@ -10,20 +10,21 @@ public class GameObject {
 	protected Image image;
 	protected float pos_x;
 	protected float pos_y;
+	private float alt_pos_x;
+	private float alt_pos_y;
 	protected int speed;
 	private int max_x = 600;
 	private int max_y = 600;
 	protected float angle =0;
-	protected float oldAngle =0;
-	protected float turningAngle =0;
-	private String direction = "up";
-	private String oldDirection;
 
 		
-	public GameObject(Image image, float pos_x2, float pos_y2, int speed) {
+	public GameObject(Image image, float pos_x, float pos_y, int speed) {
 		this.image = image;
-		this.pos_x = pos_x2;
-		this.pos_y = pos_y2;
+		this.pos_x = pos_x;
+		this.pos_y = pos_y;
+		this.alt_pos_x = pos_x;
+		this.alt_pos_y = pos_y;
+		
 		this.speed = speed;
 	}
 		
@@ -33,25 +34,18 @@ public class GameObject {
 
 	public void update() {
 		turnObject();
-		
-		oldAngle += turningAngle;
-		if (oldAngle > 360){oldAngle -= 360;}
-		if (oldAngle < -360){oldAngle += 360;}
-		turningAngle=angle;
-
+		this.alt_pos_x = this.pos_x;
+		this.alt_pos_y = this.pos_y;
 	}
 
 	protected void moveUp() {
 		// Falls das Bild den Rand überschreitet, dann ganz oben zeichnen!
 		// image.getHeight()/2 -> weil Bild von der Mitte aus gezeichnet wird.
-		if(this.pos_y-image.getHeight()/2 <= 0) {
+		if(this.pos_y-speed-image.getHeight()/2 <= 0) {
 			this.pos_y = image.getHeight()/2;
 		} else {
 			this.pos_y -= speed;
 		}
-		
-		this.oldDirection = this.direction;
-		this.direction="up";
 	}
 
 	protected void moveDown() {
@@ -60,8 +54,6 @@ public class GameObject {
 		} else {
 			this.pos_y += speed;
 		}
-		this.oldDirection = this.direction;
-		this.direction="down";
 	}
 
 	protected void moveLeft() {
@@ -70,8 +62,6 @@ public class GameObject {
 		} else {
 			this.pos_x -= speed;
 		}
-		this.oldDirection = this.direction;
-		this.direction="left";
 	}
 
 	protected void moveRight() {
@@ -80,35 +70,22 @@ public class GameObject {
 		} else {
 			this.pos_x += speed;
 		}
-		this.oldDirection = this.direction;
-		this.direction="right";
 	}
 	
 	
 	protected void turnObject(){
-		String od = this.oldDirection;
-		String d  = this.direction;
+		// Wenn sich die Position nicht geändert hat, dann muss nichts gedreht werden.
+		if (pos_x == alt_pos_x & pos_y == alt_pos_y) {
+			return;
+		}
 		
-		this.angle =0;
+		// Berechne anhand der neuen Koordinaten, den neuen Winkel
+		float new_angle = (float) Math.toDegrees(Math.atan2(this.pos_y - this.alt_pos_y, this.pos_x - this.alt_pos_x))+ 90;
+		// Modulo 360, damit der Wert zwischen 0 und 360 liegt.
+		new_angle %= 360;
 		
-		if (od == "up" && d == "right"){this.angle = 90;}
-		if (od == "right" && d == "down"){this.angle = 90;}
-		if (od == "down" && d == "left"){this.angle  = 90;}
-		if (od == "left" && d == "up"){this.angle  = 90;}
-		
-		if (od == "right" && d == "up"){this.angle  = -90;}
-		if (od == "up" && d == "left"){this.angle = -90;}
-		if (od == "left" && d == "down"){this.angle = -90;}
-		if (od == "down" && d == "right"){this.angle  = -90;}
-		
-		if (od == "left" && d == "right"){this.angle  = 180;}
-		if (od == "right" && d == "left"){this.angle  = -180;}
-		if (od == "up" && d == "down"){this.angle = 180;}
-		if (od == "down" && d == "up"){this.angle = -180;}
-		
-		this.image.rotate(this.angle);
-		
-		
+		this.image.rotate(new_angle-this.angle);
+		this.angle = new_angle;		
 	}
 	
 }

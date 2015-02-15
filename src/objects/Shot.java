@@ -5,11 +5,10 @@ import org.newdawn.slick.SlickException;
 
 public class Shot extends GameObject {
 
-	public Shot(float pos_x, float pos_y, float turningAngle, float oldAngle) throws SlickException {
+	public Shot(float pos_x, float pos_y, float angle) throws SlickException {
 		super(new Image("res/images/laser2.png"), pos_x, pos_y, 10);
-		this.angle = turningAngle;
-		this.oldAngle =oldAngle;
-		this.image.rotate(this.angle+this.oldAngle-90);
+		this.angle = angle;
+		this.image.rotate(angle-90);
 	}
 
 	public void update() {
