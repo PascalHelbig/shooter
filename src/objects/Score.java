@@ -5,18 +5,22 @@ public class Score {
 	private static int multiplyer = 1;
 	
 	public void addScore(){
-	score = score + 1 *multiplyer;
+		score += 1 *multiplyer;
 	}
 
-public void addMulti(){
+	public void addMulti(){
 		multiplyer++;
 	}
 
-public int getScore(){
-	return score;
+	public void resetMulti(){
+		multiplyer = 1;
 	}
 
-public int getMulti(){
+	public int getScore(){
+		return score;
+	}
+
+	public int getMulti(){
 		return multiplyer;
 	}
 }
