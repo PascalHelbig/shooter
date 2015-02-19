@@ -16,7 +16,7 @@ public class Zombie extends GameObject {
 	private GameObject[] bullets;
 	
 	public Zombie(int pos_x, int pos_y) throws SlickException {
-		super(new Image("res/images/zombie.png"), pos_x, pos_y, 2);
+		super(new Image("res/images/zombie.png"), pos_x, pos_y, 1);
 	}
 	
 	public void update() {
@@ -32,7 +32,7 @@ public class Zombie extends GameObject {
 		float diffY= this.pos_y-playerY;
 		
 		double length = Math.sqrt(Math.pow(diffX, 2)+Math.pow(diffY, 2));
-		System.out.println("x: "+length); //passt!
+		//System.out.println("x: "+length); //passt!
 		return length;
 
 	}
@@ -44,7 +44,7 @@ public class Zombie extends GameObject {
 		
 		float diffX=zombieX-Player.position.getX();
 		
-		System.out.println("x: "+diffX); //passt!
+		//System.out.println("x: "+diffX); //passt!
 		return diffX;
 
 	}
@@ -65,6 +65,7 @@ public class Zombie extends GameObject {
 		if(this.pos_x != Player.position.getX() || this.pos_y != Player.position.getY()){
 		this.pos_y -= (float) Math.cos(viewAngle) * this.speed;
 		this.pos_x -= (float) Math.sin(viewAngle) * this.speed;
+		//System.out.println(viewAngle);
 		}
 	}
 }

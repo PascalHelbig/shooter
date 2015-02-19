@@ -2,26 +2,28 @@ package objects;
 
 public class Coords {
 
-	private float x,y;
-	
-	public Coords(float _x, float _y){
-		this.x=_x;
-		this.y=_y;
-	} 
-	
-	public float getX(){
-		return this.x;
+	private float y;
+	private float x;
+
+	public Coords(float pos_x, float pos_y) {
+		this.y=pos_y;
+		this.x=pos_x;
 	}
-	
-	public float getY(){
+
+	public float getY() {
 		return this.y;
 	}
-	
-	public void setX(float _x){
-		this.x =_x;
+
+	public void setY(float y) {
+		this.y = y;
 	}
-	
-	public void setY(float _y){
-	    this.y =_y;
+
+	public float getX() {
+		return this.x;
 	}
+
+	public void setX(float x) {
+		this.x = x;
+	}
+
 }
