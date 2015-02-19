@@ -1,10 +1,11 @@
 package objects;
 
-import game.MyGame;
+import game.Play;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 
 public class Player2 extends GameObject{
 	public Player2(int pos_x, int pos_y) throws SlickException {		
@@ -29,7 +30,7 @@ public class Player2 extends GameObject{
 		
 		if(input.isKeyPressed(Input.KEY_NUMPAD5)) {
 			try {
-				MyGame.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle));
+				Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle));
 				
 			} catch (SlickException e) {
 				e.printStackTrace();

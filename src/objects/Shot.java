@@ -1,6 +1,6 @@
 package objects;
 
-import game.MyGame;
+import game.Play;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -17,18 +17,23 @@ public class Shot extends GameObject {
 		this.pos_y -= (float) Math.cos(Math.toRadians(this.angle)) * this.speed;
 		this.pos_x += (float) Math.sin(Math.toRadians(this.angle)) * this.speed;
 				
-		for(GameObject gameObject : MyGame.gameObjects) {
+		for(GameObject gameObject : Play.gameObjects) {
 			if(gameObject instanceof Zombie) {
 				if(getHitbox().intersects(gameObject.getHitbox())) {
-					MyGame.getroffenerZombie = (Zombie) gameObject;
-					MyGame.kugel = this;
-					MyGame.scores.addScore();
-					MyGame.scores.addMulti();
+					Play.getroffenerZombie = (Zombie) gameObject;
+					Play.kugel = this;
+					Play.scores.addScore();
+					Play.scores.addMulti();
 				}
 			}
 		}
 		
 		super.update();
+	}
+
+	public void Shot2(float pos_x, float pos_y, float angle)
+			throws SlickException {
+		throw new UnsupportedOperationException();
 	}
 	
 }

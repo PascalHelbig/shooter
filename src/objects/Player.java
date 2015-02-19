@@ -1,6 +1,6 @@
 package objects;
 
-import game.MyGame;
+import game.Play;
 
 import org.newdawn.slick.*;
 
@@ -29,7 +29,7 @@ public class Player extends GameObject {
 		
 		if(input.isKeyPressed(Input.KEY_SPACE)) {
 			try {
-				MyGame.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle));
+				Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle));
 				
 			} catch (SlickException e) {
 				e.printStackTrace();

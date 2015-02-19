@@ -3,10 +3,11 @@ package objects;
 import java.util.ArrayList;
 import java.util.List;
 
-import game.MyGame;
+import game.Play;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import java.util.*;
 
 public class Zombie extends GameObject {
 	float playerX;
@@ -14,19 +15,22 @@ public class Zombie extends GameObject {
 	float zombieX;
 
 	
-	private GameObject[] bullets;
+	private Collection<GameObject> bullets;
 	
 	private int life = 30;
+
+	float lastHeartLost;
+	float safeTime = (float) 0.5;
 
 	public Zombie(int pos_x, int pos_y) throws SlickException {
 		super(new Image("res/images/zombie.png"), pos_x, pos_y, (float)1);
 	}
 	
 	public void update() {
-		move(this.angleTo(MyGame.player));
+		move(this.angleTo(Play.player));
 		super.update();
 		
-		if(getHitbox().intersects(MyGame.player.getHitbox())) {
+		if(getHitbox().intersects(Play.player.getHitbox())) {
 			hitPlayer();
 		}
 	}
@@ -34,7 +38,7 @@ public class Zombie extends GameObject {
 	
 	public void move(float viewAngle){
 		//bewege zombie im winkel zum spielen hin
-		if(this.pos_x != MyGame.player.pos_x || this.pos_y != MyGame.player.pos_y){
+		if(this.pos_x != Play.player.pos_x || this.pos_y != Play.player.pos_y){
 		this.pos_y += (float) Math.cos(Math.toRadians(viewAngle)) * this.speed;
 		this.pos_x -= (float) Math.sin(Math.toRadians(viewAngle)) * this.speed;
 		}
@@ -42,11 +46,11 @@ public class Zombie extends GameObject {
 
 	public void hitPlayer() {
 		
-		for(GameObject gameObject : MyGame.gameObjects) {
+		for(GameObject gameObject : Play.gameObjects) {
 			if(gameObject instanceof heart) {
-				if(getHitbox().intersects(MyGame.player.getHitbox())) {
+				if(getHitbox().intersects(Play.player.getHitbox())) {
 					if (System.currentTimeMillis() > (Player.lastHeartLost + Player.safeTime*1000)){
-						MyGame.verlorenesHerz = (heart) gameObject;
+						Play.verlorenesHerz = (heart) gameObject;
 						Player.lastHeartLost=System.currentTimeMillis();
 					}
 				}
