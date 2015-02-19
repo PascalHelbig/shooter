@@ -12,11 +12,7 @@ public class Shot extends GameObject {
 	}
 
 	public void update() {
-		this.pos_y -= (float) Math.cos(Math.toRadians(this.oldAngle+this.angle)) * this.speed;
-		this.pos_x += (float) Math.sin(Math.toRadians(this.oldAngle+this.angle)) * this.speed;
+		this.pos_y -= (float) Math.cos(Math.toRadians(this.angle)) * this.speed;
+		this.pos_x += (float) Math.sin(Math.toRadians(this.angle)) * this.speed;
 	}
-
-	
-	private float angle;
-	private float oldAngle;
 }
