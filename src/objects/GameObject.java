@@ -88,5 +88,11 @@ public class GameObject {
 		this.image.rotate(new_angle-this.angle);
 		this.angle = new_angle;		
 	}
+
+	protected float angleTo(GameObject object) {
+		return (((float) Math.toDegrees(Math.atan2(this.pos_y - object.pos_y, this.pos_x - object.pos_x))+ 90) % 360);
+	}
+	
+	
 	
 }
