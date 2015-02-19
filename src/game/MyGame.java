@@ -17,9 +17,9 @@ public class MyGame extends BasicGame{
 	public void init(org.newdawn.slick.GameContainer gc) {
 		try {
 			player = new Player(100, 100);
+			Healthbar bar = new Healthbar(3);
 			player2=new Player2(300,300);
 			gameObjects.add(player);
-			gameObjects.add(player2);
 			setZombie(300,200);
 			setZombie(500,200);
 			setZombie(600,600);
@@ -62,6 +62,11 @@ public class MyGame extends BasicGame{
 				e.printStackTrace();
 			}
 		}
+		if(verlorenesHerz != null) {
+			MyGame.gameObjects.remove(verlorenesHerz);
+			//MyGame.gameObjects.remove(this);
+			verlorenesHerz = null;
+		}
 	}
 	
 	public void setZombie(int x, int y){
@@ -77,5 +82,6 @@ public class MyGame extends BasicGame{
 	public static Player2 player2;
 	public static List<objects.GameObject> gameObjects = new ArrayList<GameObject>();
 	public static Zombie getroffenerZombie = null;
-	public static Collection<GameObject> attribute = new ArrayList<GameObject>();
+	public static heart verlorenesHerz = null;
+	public Collection<GameObject> attribute;
 }

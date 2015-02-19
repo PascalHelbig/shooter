@@ -102,8 +102,5 @@ public class GameObject {
 		return this.hitbox;
 	}
 
-	public void operation() {
-		throw new UnsupportedOperationException();
-	}
 	
 }

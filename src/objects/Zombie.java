@@ -26,7 +26,7 @@ public class Zombie extends GameObject {
 		super.update();
 		
 		if(getHitbox().intersects(MyGame.player.getHitbox())) {
-
+			hitPlayer();
 		}
 	}
 	
@@ -40,7 +40,14 @@ public class Zombie extends GameObject {
 	}
 
 	public void hitPlayer() {
-		throw new UnsupportedOperationException();
+		for(GameObject gameObject : MyGame.gameObjects) {
+			if(gameObject instanceof heart) {
+				if(getHitbox().intersects(MyGame.player.getHitbox())) {
+					MyGame.verlorenesHerz = (heart) gameObject;
+				}
+			}
+		}
+		
 	}
 		
 	
