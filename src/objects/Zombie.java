@@ -16,7 +16,7 @@ public class Zombie extends GameObject {
 	private GameObject[] bullets;
 	
 	public Zombie(int pos_x, int pos_y) throws SlickException {
-		super(new Image("res/images/player.jpg"), pos_x, pos_y, 2);
+		super(new Image("res/images/zombie.png"), pos_x, pos_y, 2);
 	}
 	
 	public void update() {
