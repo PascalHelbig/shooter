@@ -2,8 +2,11 @@ package objects;
 
 
 import org.newdawn.slick.*;
+import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.geom.Shape;
 
 import java.util.*;
+import org.newdawn.slick.geom.*;
 
 public class GameObject {
 
@@ -17,13 +20,15 @@ public class GameObject {
 	private int max_y = 600;
 	protected float angle =0;
 		
+	protected Shape hitbox;
+
 	public GameObject(Image image, float pos_x, float pos_y, float speed) {
 		this.image = image;
 		this.pos_x = pos_x;
 		this.pos_y = pos_y;
 		this.alt_pos_x = pos_x;
 		this.alt_pos_y = pos_y;
-		
+		this.hitbox = new Rectangle(this.pos_x, this.pos_y, this.image.getWidth(), this.image.getHeight());
 		this.speed = speed;
 	}
 		
@@ -35,6 +40,8 @@ public class GameObject {
 		turnObject();
 		this.alt_pos_x = this.pos_x;
 		this.alt_pos_y = this.pos_y;
+		this.hitbox.setCenterX(pos_x);
+		this.hitbox.setCenterY(pos_y);
 	}
 		
 	protected void moveUp() {
@@ -90,7 +97,13 @@ public class GameObject {
 	protected float angleTo(GameObject object) {
 		return ((float) Math.toDegrees(Math.atan2(this.pos_y - object.pos_y, this.pos_x - object.pos_x))+ 90);
 	}
-	
-	
+
+	public Shape getHitbox() {
+		return this.hitbox;
+	}
+
+	public void operation() {
+		throw new UnsupportedOperationException();
+	}
 	
 }

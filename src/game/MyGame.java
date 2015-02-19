@@ -6,6 +6,7 @@ import java.util.List;
 import org.newdawn.slick.*;
 
 import objects.*;
+
 import java.util.*;
 
 public class MyGame extends BasicGame{
@@ -18,7 +19,8 @@ public class MyGame extends BasicGame{
 			player = new Player(100, 100);
 			gameObjects.add(player);
 			setZombie(300,200);
-
+			setZombie(500,200);
+			setZombie(600,600);
 			
 
 		} catch (SlickException e) {
@@ -32,6 +34,7 @@ public class MyGame extends BasicGame{
 		// Render alle GameObjecte
 		for(GameObject gameObject : MyGame.gameObjects) {
 			gameObject.render();
+			g.draw(gameObject.getHitbox());
 		}
 	}
 
@@ -40,6 +43,18 @@ public class MyGame extends BasicGame{
 		
 		for(GameObject gameObject : MyGame.gameObjects) {
 			gameObject.update();
+		}
+		
+		if(getroffenerZombie != null) {
+			MyGame.gameObjects.remove(getroffenerZombie);
+			//MyGame.gameObjects.remove(this);
+			getroffenerZombie = null;
+			try {
+				MyGame.gameObjects.add(new Zombie(50,50));
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -54,4 +69,5 @@ public class MyGame extends BasicGame{
 
 	public static Player player;
 	public static List<objects.GameObject> gameObjects = new ArrayList<GameObject>();
+	public static Zombie getroffenerZombie = null;
 }

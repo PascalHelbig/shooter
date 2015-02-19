@@ -16,13 +16,16 @@ public class Zombie extends GameObject {
 	private GameObject[] bullets;
 	
 	public Zombie(int pos_x, int pos_y) throws SlickException {
-		super(new Image("res/images/player.jpg"), pos_x, pos_y, (float)1);
+		super(new Image("res/images/zombie.png"), pos_x, pos_y, (float)1);
 	}
 	
 	public void update() {
 		move(this.angleTo(MyGame.player));
 		super.update();
 		
+		if(getHitbox().intersects(MyGame.player.getHitbox())) {
+			System.out.println("Tot!!!");
+		}
 	}
 	
 	
@@ -31,7 +34,6 @@ public class Zombie extends GameObject {
 		if(this.pos_x != MyGame.player.pos_x || this.pos_y != MyGame.player.pos_y){
 		this.pos_y += (float) Math.cos(Math.toRadians(viewAngle)) * this.speed;
 		this.pos_x -= (float) Math.sin(Math.toRadians(viewAngle)) * this.speed;
-		System.out.println(viewAngle);
 		}
 	}
 		
