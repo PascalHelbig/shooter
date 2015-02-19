@@ -8,7 +8,7 @@ public class Player extends GameObject {
 
 	
 	public Player(int pos_x, int pos_y) throws SlickException {		
-		super(new Image("res/images/guyStanding.png"), pos_x, pos_y, 5);
+		super(new Image("res/images/guy.png"), pos_x, pos_y, 5);
 	}
 
 	public void checkInputs(Input input)  {
