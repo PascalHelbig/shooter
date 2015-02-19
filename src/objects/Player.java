@@ -6,12 +6,9 @@ import org.newdawn.slick.*;
 
 public class Player extends GameObject {
 
-	public static Coords position;
 	
 	public Player(int pos_x, int pos_y) throws SlickException {		
-		super(new Image("res/images/guy.png"), pos_x, pos_y, 3);
-		//coords müssen bei jeder bewegung neu gesetzt werden, damit spieler von zombie getrackt werden kann
-		position=new Coords(pos_x, pos_y);
+		super(new Image("res/images/guyStanding.png"), pos_x, pos_y, 5);
 	}
 
 	public void checkInputs(Input input)  {
