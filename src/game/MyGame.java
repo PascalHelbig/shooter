@@ -17,9 +17,10 @@ public class MyGame extends BasicGame{
 		try {
 			player = new Player(100, 100);
 			gameObjects.add(player);
-			setZombie(300,300);
-			setZombie(100,300);
-			setZombie(50,280);
+			setZombie(300,200);
+
+			
+
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}

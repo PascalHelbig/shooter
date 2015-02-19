@@ -12,12 +12,12 @@ public class GameObject {
 	protected float pos_y;
 	private float alt_pos_x;
 	private float alt_pos_y;
-	protected int speed;
+	protected float speed;
 	private int max_x = 600;
 	private int max_y = 600;
 	protected float angle =0;
 		
-	public GameObject(Image image, float pos_x, float pos_y, int speed) {
+	public GameObject(Image image, float pos_x, float pos_y, float speed) {
 		this.image = image;
 		this.pos_x = pos_x;
 		this.pos_y = pos_y;
@@ -35,8 +35,6 @@ public class GameObject {
 		turnObject();
 		this.alt_pos_x = this.pos_x;
 		this.alt_pos_y = this.pos_y;
-		Player.position.setX(this.pos_x);
-		Player.position.setY(this.pos_y);
 	}
 		
 	protected void moveUp() {
@@ -72,7 +70,7 @@ public class GameObject {
 			this.pos_x += speed;
 		}
 	}
-	
+
 	
 	protected void turnObject(){
 		// Wenn sich die Position nicht geändert hat, dann muss nichts gedreht werden.
@@ -90,7 +88,7 @@ public class GameObject {
 	}
 
 	protected float angleTo(GameObject object) {
-		return (((float) Math.toDegrees(Math.atan2(this.pos_y - object.pos_y, this.pos_x - object.pos_x))+ 90) % 360);
+		return ((float) Math.toDegrees(Math.atan2(this.pos_y - object.pos_y, this.pos_x - object.pos_x))+ 90);
 	}
 	
 	
