@@ -1,11 +1,15 @@
 package objects;
 
+import game.MyGame;
+
 public class Score {
 	private static int score = 0;
 	private static int multiplyer = 1;
 	
 	public void addScore(){
-	score = score + 1 *multiplyer;
+		if (!MyGame.playerDead){
+			score = score + 1 *multiplyer;
+		}
 	}
 
 public void addMulti(){

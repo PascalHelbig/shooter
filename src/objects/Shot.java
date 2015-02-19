@@ -22,6 +22,8 @@ public class Shot extends GameObject {
 				if(getHitbox().intersects(gameObject.getHitbox())) {
 					MyGame.getroffenerZombie = (Zombie) gameObject;
 					MyGame.kugel = this;
+					MyGame.scores.addScore();
+					MyGame.scores.addMulti();
 				}
 			}
 		}

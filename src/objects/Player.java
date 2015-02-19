@@ -37,6 +37,6 @@ public class Player extends GameObject {
 		}
 	
 	}
-
-	public static int life = 100;
+	public static double safeTime = 0.5;
+	public static long lastHeartLost;
 }

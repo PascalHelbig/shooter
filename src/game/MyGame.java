@@ -39,7 +39,7 @@ public class MyGame extends BasicGame{
 		// Render alle GameObjecte
 		for(GameObject gameObject : MyGame.gameObjects) {
 			gameObject.render();
-			g.draw(gameObject.getHitbox());
+			//g.draw(gameObject.getHitbox());
 		}
 	}
 
@@ -47,10 +47,32 @@ public class MyGame extends BasicGame{
 		player.checkInputs(gc.getInput());
 		player2.checkInputs(gc.getInput());
 		
+		updateAllObjects();
+		checkZombieDead();
+		checkHeartsLost();
+		checkPlayerAlive();
+		scores.addScore();
+		System.out.println(scores.getScore());
+		
+	
+	}
+	
+	public void setZombie(int x, int y){
+		try {
+			gameObjects.add(new Zombie(x,y));
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void updateAllObjects(){
 		for(GameObject gameObject : MyGame.gameObjects) {
 			gameObject.update();
 		}
-		
+	}
+
+	public void checkZombieDead(){
 		if(getroffenerZombie != null) {
 			MyGame.gameObjects.remove(getroffenerZombie);
 			MyGame.gameObjects.remove(kugel);
@@ -68,6 +90,9 @@ public class MyGame extends BasicGame{
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public void checkHeartsLost(){
 		if(verlorenesHerz != null) {
 			MyGame.gameObjects.remove(verlorenesHerz);
 			Healthbar.lifes--;
@@ -79,15 +104,13 @@ public class MyGame extends BasicGame{
 		}
 	}
 	
-	public void setZombie(int x, int y){
-		try {
-			gameObjects.add(new Zombie(x,y));
-		} catch (Exception e){
-			e.printStackTrace();
+	public void checkPlayerAlive(){
+		if (playerDead == true){
+			System.out.println("Player dead!!!");
 		}
-		
 	}
 	
+	public static Score scores = new Score();
 	public static boolean playerDead = false;
 	private int killingCounter = 0;
 	public static Player player;

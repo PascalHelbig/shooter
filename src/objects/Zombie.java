@@ -12,8 +12,7 @@ public class Zombie extends GameObject {
 	float playerX;
 	float playerY;
 	float zombieX;
-	float lastHeartLost;
-	float safeTime = (float)0.5;
+
 	
 	private GameObject[] bullets;
 	
@@ -42,19 +41,25 @@ public class Zombie extends GameObject {
 	}
 
 	public void hitPlayer() {
-		if (System.currentTimeMillis() > (lastHeartLost + (safeTime*1000))){
+		
 		for(GameObject gameObject : MyGame.gameObjects) {
 			if(gameObject instanceof heart) {
 				if(getHitbox().intersects(MyGame.player.getHitbox())) {
-					MyGame.verlorenesHerz = (heart) gameObject;
+					if (System.currentTimeMillis() > (Player.lastHeartLost + Player.safeTime*1000)){
+						MyGame.verlorenesHerz = (heart) gameObject;
+						Player.lastHeartLost=System.currentTimeMillis();
+					}
 				}
 			}
 		}
-		lastHeartLost=System.currentTimeMillis();
+			
+			System.out.println("sys "+System.currentTimeMillis());
+			System.out.println("Player "+Player.lastHeartLost);
 	   }
+		
 	}
 		
 	
 	
 
-}
+
