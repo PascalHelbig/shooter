@@ -28,7 +28,6 @@ public class MyGame extends BasicGame{
 
 	public void render(org.newdawn.slick.GameContainer gc,
 			org.newdawn.slick.Graphics g) {
-		g.drawString("Howdy! es geht!", 50, 50);
 		
 		// Render alle GameObjecte
 		for(GameObject gameObject : MyGame.gameObjects) {
