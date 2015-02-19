@@ -17,10 +17,15 @@ public class MyGame extends BasicGame{
 	public void init(org.newdawn.slick.GameContainer gc) {
 		try {
 			player = new Player(100, 100);
+			player2=new Player2(300,300);
 			gameObjects.add(player);
+			gameObjects.add(player2);
 			setZombie(300,200);
 			setZombie(500,200);
 			setZombie(600,600);
+			setZombie(350,300);
+			setZombie(500,250);
+			setZombie(600,500);
 			
 
 		} catch (SlickException e) {
@@ -40,6 +45,7 @@ public class MyGame extends BasicGame{
 
 	public void update(org.newdawn.slick.GameContainer gc, int arg1) {
 		player.checkInputs(gc.getInput());
+		player2.checkInputs(gc.getInput());
 		
 		for(GameObject gameObject : MyGame.gameObjects) {
 			gameObject.update();
@@ -68,6 +74,8 @@ public class MyGame extends BasicGame{
 	}
 
 	public static Player player;
+	public static Player2 player2;
 	public static List<objects.GameObject> gameObjects = new ArrayList<GameObject>();
 	public static Zombie getroffenerZombie = null;
+	public static Collection<GameObject> attribute = new ArrayList<GameObject>();
 }

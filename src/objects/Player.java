@@ -37,4 +37,6 @@ public class Player extends GameObject {
 		}
 	
 	}
+
+	public static int life = 100;
 }

@@ -27,5 +27,7 @@ public class Shot extends GameObject {
 		
 		super.update();
 	}
+
+	private float angle;
 	
 }

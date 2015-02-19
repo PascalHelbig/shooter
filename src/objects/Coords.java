@@ -6,8 +6,7 @@ public class Coords {
 	private float x;
 
 	public Coords(float pos_x, float pos_y) {
-		this.y=pos_y;
-		this.x=pos_x;
+		throw new UnsupportedOperationException();
 	}
 
 	public float getY() {
@@ -25,5 +24,4 @@ public class Coords {
 	public void setX(float x) {
 		this.x = x;
 	}
-
 }
