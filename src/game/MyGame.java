@@ -53,19 +53,29 @@ public class MyGame extends BasicGame{
 		
 		if(getroffenerZombie != null) {
 			MyGame.gameObjects.remove(getroffenerZombie);
+			MyGame.gameObjects.remove(kugel);
+			killingCounter++;
 			//MyGame.gameObjects.remove(this);
 			getroffenerZombie = null;
 			try {
-				MyGame.gameObjects.add(new Zombie(50,50));
+				if (killingCounter % 5 == 0){
+					MyGame.gameObjects.add(new Zombie(50,50));
+					MyGame.gameObjects.add(new Zombie(300,250));
+				} else {
+					MyGame.gameObjects.add(new Zombie(50,50));
+				}
 			} catch (SlickException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		if(verlorenesHerz != null) {
 			MyGame.gameObjects.remove(verlorenesHerz);
-			//MyGame.gameObjects.remove(this);
-			verlorenesHerz = null;
+			Healthbar.lifes--;
+			if (Healthbar.lifes == 0){
+				playerDead=true;
+			} else{
+				verlorenesHerz = null;
+			}
 		}
 	}
 	
@@ -77,11 +87,14 @@ public class MyGame extends BasicGame{
 		}
 		
 	}
-
+	
+	public static boolean playerDead = false;
+	private int killingCounter = 0;
 	public static Player player;
 	public static Player2 player2;
 	public static List<objects.GameObject> gameObjects = new ArrayList<GameObject>();
 	public static Zombie getroffenerZombie = null;
+	public static Shot kugel = null;
 	public static heart verlorenesHerz = null;
 	public Collection<GameObject> attribute;
 }

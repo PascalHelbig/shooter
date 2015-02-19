@@ -7,7 +7,7 @@ import org.newdawn.slick.SlickException;
 
 public class Healthbar {
 
-	private int lifes;
+	public static int lifes;
 
 	public Healthbar(int lifes) {
 		int x_axis= 600;

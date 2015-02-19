@@ -21,13 +21,12 @@ public class Shot extends GameObject {
 			if(gameObject instanceof Zombie) {
 				if(getHitbox().intersects(gameObject.getHitbox())) {
 					MyGame.getroffenerZombie = (Zombie) gameObject;
+					MyGame.kugel = this;
 				}
 			}
 		}
 		
 		super.update();
 	}
-
-	private float angle;
 	
 }
