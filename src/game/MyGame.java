@@ -9,7 +9,6 @@ import objects.*;
 import java.util.*;
 
 public class MyGame extends BasicGame{
-
 	public MyGame(String name) {
 		super(name);
 	}
@@ -52,6 +51,6 @@ public class MyGame extends BasicGame{
 		
 	}
 
-	private Player player;
+	public static Player player;
 	public static List<objects.GameObject> gameObjects = new ArrayList<GameObject>();
 }
