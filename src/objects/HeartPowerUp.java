@@ -10,7 +10,7 @@ public class HeartPowerUp extends PowerUp {
 	public static int heartsOnScreen =0;
 	
 	public HeartPowerUp() throws SlickException {
-		super(new Image("res/images/heart.png"));
+		super(new Image("res/images/powerupHeart.png"));
 		heartsOnScreen++;
 	}
 
