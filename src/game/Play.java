@@ -27,12 +27,9 @@ public class Play extends BasicGameState{
 		
 		player = new Player(100, 100, 3);
 		gameObjects.add(player);
-		setZombie();
-		setZombie();
-		setZombie();
-		setZombie();
-		setZombie();
-		setZombie();
+		for(int i = 0; i < Game.START_ZOMBIES; i++) {
+			setZombie();
+		}
 		super.enter(container, game);
 
 	}
@@ -55,16 +52,10 @@ public class Play extends BasicGameState{
 		
 		player.checkInputs(gc.getInput());
 		
-		updateAllObjects();
 		checkZombieDead();
-		//checkHeartsLost();
-		checkPlayerAlive();
-		scores.addScore();
-		System.out.println(scores.getScore());
-		
-		
-		
-	
+		for(GameObject gameObject : Play.gameObjects) {
+			gameObject.update();
+		}	
 	}
 	
 	public int getID() {
@@ -80,18 +71,11 @@ public class Play extends BasicGameState{
 		
 	}
 	
-	public void updateAllObjects(){
-		for(GameObject gameObject : Play.gameObjects) {
-			gameObject.update();
-		}
-	}
-
-	public void checkZombieDead(){
+	private void checkZombieDead(){
 		if(getroffenerZombie != null) {
 			Play.gameObjects.remove(getroffenerZombie);
 			Play.gameObjects.remove(kugel);
 			killingCounter++;
-			//MyGame.gameObjects.remove(this);
 			getroffenerZombie = null;
 			try {
 				if (killingCounter % 5 == 0){
@@ -106,30 +90,6 @@ public class Play extends BasicGameState{
 		}
 	}
 	
-	/*
-	public void checkHeartsLost(){
-		if(verlorenesHerz != null) {
-			Play.gameObjects.remove(verlorenesHerz);
-			Healthbar.lifes--;
-			if (Healthbar.lifes == 0){
-				playerDead=true;
-			} else{
-				verlorenesHerz = null;
-			}
-		}
-	}
-	*/
-	
-	public void checkPlayerAlive(){
-		if (playerDead == true){
-			System.out.println("Player dead!!!");
-		}
-	}
-	
-	public void setZombie2(int x, int y) {
-		throw new UnsupportedOperationException();
-	}
-
 	private int state;
 	public static Score scores = new Score();
 	public static boolean playerDead = false;
@@ -138,7 +98,4 @@ public class Play extends BasicGameState{
 	public static List<objects.GameObject> gameObjects = new ArrayList<GameObject>();
 	public static Zombie getroffenerZombie = null;
 	public static Shot kugel = null;
-	/*public static heart verlorenesHerz = null;
-	public static Collection<heart> hearts = new ArrayList<heart>();
-	*/
 }

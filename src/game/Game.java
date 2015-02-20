@@ -3,8 +3,6 @@ package game;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
-import org.newdawn.slick.state.*;
-import org.newdawn.slick.*;
 
 public class Game extends StateBasedGame{
 	
@@ -12,6 +10,7 @@ public class Game extends StateBasedGame{
 	public static final int WIDTH = 640;
 	public static final int HEIGHT = 640;
 	public static final int SPAWN_DISTANCE = 300;
+	public static final int START_ZOMBIES = 3;
 	
 	public Game(String name) {
 		super(name);
