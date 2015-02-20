@@ -13,22 +13,22 @@ public class Player extends GameObject {
 	}
 
 	public void checkInputs(Input input)  {
-		if(input.isKeyDown(Input.KEY_W)) {	
+		if(input.isKeyDown(Input.KEY_W) || input.isControllerUp(0)) {	
 			this.moveUp();
 		}
-		if(input.isKeyDown(Input.KEY_S)) {
+		if(input.isKeyDown(Input.KEY_S)|| input.isControllerDown(0)) {
 			this.moveDown();
 		}
-		if(input.isKeyDown(Input.KEY_A)) {
+		if(input.isKeyDown(Input.KEY_A)|| input.isControllerLeft(0)) {
 			this.moveLeft();
 		}
-		if(input.isKeyDown(Input.KEY_D)) {
+		if(input.isKeyDown(Input.KEY_D)|| input.isControllerRight(0)) {
 			this.moveRight();
 		}
 	
 		
 		
-		if(input.isKeyPressed(Input.KEY_SPACE)) {
+		if(input.isKeyPressed(Input.KEY_SPACE) || input.isControlPressed(6, 0)) {
 			try {
 				Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle));
 				

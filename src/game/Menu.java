@@ -22,12 +22,12 @@ public class Menu extends BasicGameState{
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		g.drawString("Spiel starten mit Leertaste", 150, 300);
+		g.drawString("Spiel starten mit Leertaste oder Controller 'X'", 100, 300);
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int arg2) 	throws SlickException {
-		if(gc.getInput().isKeyPressed(Input.KEY_SPACE)) {
+		if(gc.getInput().isKeyPressed(Input.KEY_SPACE) || gc.getInput().isControlPressed(6, 0)) {
 			sbg.enterState(Game.PLAY, new FadeOutTransition(Color.white), new FadeInTransition(Color.white));
 		}
 	}
