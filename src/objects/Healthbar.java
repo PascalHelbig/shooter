@@ -32,4 +32,8 @@ public class Healthbar{
 			lifes--;
 		} 
 	}
+	
+	public void addLife() {
+		lifes++;
+	}
 }
