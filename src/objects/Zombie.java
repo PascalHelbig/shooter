@@ -1,5 +1,6 @@
 package objects;
 
+import game.Game;
 import game.Play;
 
 import org.newdawn.slick.Image;
@@ -13,8 +14,12 @@ public class Zombie extends GameObject {
 	float lastHeartLost;
 	float safeTime = (float) 0.5;
 
-	public Zombie(int pos_x, int pos_y) throws SlickException {
-		super(new Image("res/images/zombie.png"), pos_x, pos_y, (float)1);
+	public Zombie() throws SlickException {
+		super(new Image("res/images/zombie.png"), 0, 0, (float)1);
+		do {
+			pos_x = (float) (Game.WIDTH * Math.random());
+			pos_y = (float) (Game.HEIGHT * Math.random());
+		} while (distanceTo(Play.player) < Game.SPAWN_DISTANCE);		
 	}
 	
 	public void update() {
@@ -22,7 +27,7 @@ public class Zombie extends GameObject {
 		super.update();
 		
 		if(intersects(Play.player)) {
-			hitPlayer();
+			Play.player.loseHeart();
 		}
 	}
 	
@@ -34,27 +39,8 @@ public class Zombie extends GameObject {
 		this.pos_x -= (float) Math.sin(Math.toRadians(viewAngle)) * this.speed;
 		}
 	}
-
-	public void hitPlayer() {
 		
-		for(GameObject gameObject : Play.gameObjects) {
-			if(gameObject instanceof heart) {
-				if(intersects(Play.player)) {
-					if (System.currentTimeMillis() > (Player.lastHeartLost + Player.safeTime*1000)){
-						Play.verlorenesHerz = (heart) gameObject;
-						Player.lastHeartLost=System.currentTimeMillis();
-					}
-				}
-			}
-		}
-			
-			System.out.println("sys "+System.currentTimeMillis());
-			System.out.println("Player "+Player.lastHeartLost);
-	   }
-		
-	}
-		
-	
+}
 	
 
 

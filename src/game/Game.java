@@ -5,7 +5,13 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Game extends StateBasedGame{
-
+	
+	public static final int CONTROLLER_PORT = 2;
+	public static final int WIDTH = 640;
+	public static final int HEIGHT = 640;
+	public static final int SPAWN_DISTANCE = 300;
+	public static final int START_ZOMBIES = 3;
+	
 	public Game(String name) {
 		super(name);
 	}
@@ -14,8 +20,10 @@ public class Game extends StateBasedGame{
 	public void initStatesList(GameContainer gc) throws SlickException {
 		addState(new Menu(MENU));
 		addState(new Play(PLAY));		
+		addState(new GameOver(GAME_OVER));	
 	}
 
 	public static final int MENU = 0;
 	public static final int PLAY = 1;
+	public static final int GAME_OVER= 2;
 }
