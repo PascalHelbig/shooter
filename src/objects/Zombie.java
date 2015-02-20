@@ -1,24 +1,15 @@
 package objects;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import game.Play;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import java.util.*;
 
 public class Zombie extends GameObject {
 	float playerX;
 	float playerY;
 	float zombieX;
-
 	
-	private Collection<GameObject> bullets;
-	
-	private int life = 30;
-
 	float lastHeartLost;
 	float safeTime = (float) 0.5;
 

@@ -5,9 +5,6 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
 
-import java.util.*;
-import org.newdawn.slick.geom.*;
-
 public class GameObject {
 
 	protected Image image;

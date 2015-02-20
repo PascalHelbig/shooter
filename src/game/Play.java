@@ -10,7 +10,6 @@ import org.newdawn.slick.state.StateBasedGame;
 import objects.*;
 
 import java.util.*;
-import org.newdawn.slick.state.*;
 
 public class Play extends BasicGameState{
 	
@@ -21,7 +20,6 @@ public class Play extends BasicGameState{
 	public void init(GameContainer gc, StateBasedGame sbg) {
 		try {
 			player = new Player(100, 100);
-			Healthbar bar = new Healthbar(3);
 			gameObjects.add(player);
 			setZombie(300,200);
 			setZombie(500,200);
@@ -130,9 +128,4 @@ public class Play extends BasicGameState{
 	public static Shot kugel = null;
 	public static heart verlorenesHerz = null;
 	public static Collection<heart> hearts = new ArrayList<heart>();
-	public static Collection<GameObject> gameObjects2 = new ArrayList<GameObject>();
-	public static objects.Player2 player2;
-	public static Player2 attribute;
-	public Collection<GameObject> attribute2;
-
 }

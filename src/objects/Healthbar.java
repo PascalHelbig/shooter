@@ -2,7 +2,6 @@ package objects;
 
 import game.Play;
 
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 public class Healthbar {
