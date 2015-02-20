@@ -7,8 +7,9 @@ import org.newdawn.slick.*;
 public class Player extends GameObject {
 
 	
-	public Player(int pos_x, int pos_y) throws SlickException {		
+	public Player(int pos_x, int pos_y, int life) throws SlickException {		
 		super(new Image("res/images/guy.png"), pos_x, pos_y, 5);
+		this.healthbar = new Healthbar(life);
 	}
 
 	public void checkInputs(Input input)  {
@@ -37,6 +38,20 @@ public class Player extends GameObject {
 		}
 	
 	}
+	
+	public void render(){
+		super.render();
+		this.healthbar.render();
+	}
+	
+	public void loseHeart(){
+		if((this.lastHeartLost + safeTime*1000) < System.currentTimeMillis()) {
+			this.healthbar.loseLife();
+			this.lastHeartLost = System.currentTimeMillis();
+		}
+	}
+	
 	public static double safeTime = 0.5;
-	public static long lastHeartLost;
+	private Healthbar healthbar;
+	public long lastHeartLost;
 }

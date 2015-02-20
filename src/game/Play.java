@@ -9,8 +9,6 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import objects.*;
 
-import java.util.*;
-
 public class Play extends BasicGameState{
 	
 	public Play(int state) {
@@ -19,7 +17,7 @@ public class Play extends BasicGameState{
 	
 	public void init(GameContainer gc, StateBasedGame sbg) {
 		try {
-			player = new Player(100, 100);
+			player = new Player(100, 100, 10);
 			gameObjects.add(player);
 			setZombie(300,200);
 			setZombie(500,200);
@@ -49,7 +47,7 @@ public class Play extends BasicGameState{
 		
 		updateAllObjects();
 		checkZombieDead();
-		checkHeartsLost();
+		//checkHeartsLost();
 		checkPlayerAlive();
 		scores.addScore();
 		System.out.println(scores.getScore());
@@ -96,6 +94,7 @@ public class Play extends BasicGameState{
 		}
 	}
 	
+	/*
 	public void checkHeartsLost(){
 		if(verlorenesHerz != null) {
 			Play.gameObjects.remove(verlorenesHerz);
@@ -107,6 +106,7 @@ public class Play extends BasicGameState{
 			}
 		}
 	}
+	*/
 	
 	public void checkPlayerAlive(){
 		if (playerDead == true){
@@ -126,6 +126,7 @@ public class Play extends BasicGameState{
 	public static List<objects.GameObject> gameObjects = new ArrayList<GameObject>();
 	public static Zombie getroffenerZombie = null;
 	public static Shot kugel = null;
-	public static heart verlorenesHerz = null;
+	/*public static heart verlorenesHerz = null;
 	public static Collection<heart> hearts = new ArrayList<heart>();
+	*/
 }
