@@ -23,6 +23,7 @@ public class Shot extends GameObject {
 					Play.toDeleteObjects.add(gameObject);
 					Play.toDeleteObjects.add(this);
 					Play.kugel = this;
+					return;
 				}
 			}
 		}
