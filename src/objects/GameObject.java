@@ -1,8 +1,5 @@
 package objects;
 
-
-import javax.jws.Oneway;
-
 import game.Game;
 
 import org.newdawn.slick.*;
@@ -15,13 +12,12 @@ public class GameObject {
 	protected float pos_y;
 	private float alt_pos_x;
 	private float alt_pos_y;
+	private float speed_change = 0;
+	private long time_speed_change_ends = 0;
 	protected float speed;
 	protected float angle =0;
 		
 	protected Shape hitbox;
-
-	private int max_x = 600;
-	private int max_y = 600;
 
 	public GameObject(Image image, float pos_x, float pos_y, float speed) {
 		this.image = image;
@@ -42,6 +38,11 @@ public class GameObject {
 		this.alt_pos_x = this.pos_x;
 		this.alt_pos_y = this.pos_y;
 		setHitbox();
+		
+		if(System.currentTimeMillis() > this.time_speed_change_ends) {
+			this.speed -= speed_change;
+			this.speed_change = 0;
+		}
 	}
 		
 	protected void moveUp() {
@@ -121,5 +122,9 @@ public class GameObject {
 	public void destroy() {
 	}
 
-	
+	public void changeSpeed(int change, int duration) {	
+		this.speed_change += change;
+		this.speed += change;
+		this.time_speed_change_ends = System.currentTimeMillis() + duration;
+	}
 }
