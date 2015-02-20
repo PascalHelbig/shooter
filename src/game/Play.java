@@ -120,18 +120,19 @@ public class Play extends BasicGameState{
 					case 2: 
 						gameObjects.add(new KillAllPowerUp()); 
 						break;
+					case 3: 
+						if(player.shots + ShootPowerUp.shotsOnScreen >= 3) {
+							neuesPowerUpGefunden = false; 
+							break;
+						}	
+						gameObjects.add(new ShootPowerUp()); 
+						break;
 				}
 			} catch (SlickException e){
 				e.printStackTrace();
 			}
 		} while (!neuesPowerUpGefunden);
 	}
-
-	
-	public void initPowerUps() {
-		throw new UnsupportedOperationException();
-	}
-
 
 	private int state;
 	public static Score scores = new Score();

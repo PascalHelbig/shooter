@@ -16,8 +16,6 @@ public class Zombie extends GameObject {
 	private static int killCounter = 0;
 	public static int count = 0;
 	
-	float lastHeartLost;
-	float safeTime = (float) 0.5;
 
 	public Zombie() throws SlickException {
 		super(new Image("res/images/zombie.png"), 0, 0, (float)1);
@@ -35,6 +33,8 @@ public class Zombie extends GameObject {
 		
 		if(intersects(Play.player)) {
 			Play.player.loseHeart();
+			Play.player.resetShots();
+
 		}
 	}
 	

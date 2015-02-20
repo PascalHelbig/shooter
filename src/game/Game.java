@@ -9,11 +9,11 @@ import org.newdawn.slick.*;
 public class Game extends StateBasedGame{
 	
 	public static final int CONTROLLER_PORT = 0;
-	public static final int WIDTH = 640;
-	public static final int HEIGHT = 640;
+	public static final int WIDTH = 1023;
+	public static final int HEIGHT = 700;
 	public static final int SPAWN_DISTANCE = 300;
 	public static final int START_ZOMBIES = 3;
-	public static final int NUMBER_OF_POWERUPS = 3;
+	public static final int NUMBER_OF_POWERUPS = 4;
 	
 	public Game(String name) {
 		super(name);

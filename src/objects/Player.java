@@ -30,8 +30,17 @@ public class Player extends GameObject {
 		
 		if(input.isKeyPressed(Input.KEY_SPACE) || input.isControlPressed(6, Game.CONTROLLER_PORT)) {
 			try {
-				Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle));
-				
+				switch (shots){
+					case 1:	Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle));
+							break;
+					case 2:	Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle-22.5f));
+					   		Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+22.5f));
+					   		break;
+					case 3:	Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle-45f));
+						   	Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle));
+						   	Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+45f));
+						   	break;
+				}
 			} catch (SlickException e) {
 				e.printStackTrace();
 			}
@@ -52,6 +61,11 @@ public class Player extends GameObject {
 		}
 	}
 	
+	public void resetShots(){
+		Player.shots=1;
+		ShootPowerUp.shotsOnScreen=0;
+	}
+	
 	public void addHeart(){
 		this.healthbar.addLife();	
 	}
@@ -67,4 +81,5 @@ public class Player extends GameObject {
 	public static double safeTime = 0.5;
 	private Healthbar healthbar;
 	public long lastHeartLost;
+	public static int shots = 1;
 }
