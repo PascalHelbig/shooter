@@ -1,5 +1,7 @@
 package objects;
 
+import java.util.Random;
+
 import game.Game;
 import game.Play;
 
@@ -59,7 +61,7 @@ public class Zombie extends GameObject {
 				Play.gameObjects.add(new Zombie());
 			}
 			if((killCounter % 30) == 0) {
-				Play.gameObjects.add(new HeartPowerUp());				
+				Play.createPowerUp();			
 			}
 			
 		} catch (SlickException e) {

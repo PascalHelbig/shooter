@@ -32,9 +32,6 @@ public class Play extends BasicGameState{
 		
 		player = new Player(100, 100, 3);
 		gameObjects.add(player);
-		gameObjects.add(new HeartPowerUp());
-		gameObjects.add(new FreezePowerUp());
-		gameObjects.add(new KillAllPowerUp());
 		for(int i = 0; i < Game.START_ZOMBIES; i++) {
 			setZombie();
 		}
@@ -88,8 +85,32 @@ public class Play extends BasicGameState{
 		
 	}
 	
-	public void initPowerUps(){
-		
+	public static void createPowerUp(){
+		boolean neuesPowerUpGefunden;
+		do {
+			neuesPowerUpGefunden = true;
+			Random rand = new Random();
+			int i = rand.nextInt(Game.NUMBER_OF_POWERUPS);
+			try{
+				switch (i){
+					case 0:
+						if((Play.player.getLifes() + HeartPowerUp.heartsOnScreen) >= 5) {
+							neuesPowerUpGefunden = false; 
+							break;
+						}
+						gameObjects.add(new HeartPowerUp());
+						break;
+					case 1: 
+						gameObjects.add(new FreezePowerUp()); 
+						break;
+					case 2: 
+						gameObjects.add(new KillAllPowerUp()); 
+						break;
+				}
+			} catch (SlickException e){
+				e.printStackTrace();
+			}
+		} while (!neuesPowerUpGefunden);
 	}
 
 	
@@ -103,5 +124,5 @@ public class Play extends BasicGameState{
 	public static Collection<GameObject> gameObjects = new ArrayList<GameObject>();
 	public Collection<GameObject> attribute;
 	private int killingCounter = 0;
-	private PowerUp specials[];
+	public static PowerUp specials[];
 }
