@@ -29,7 +29,6 @@ public class Play extends BasicGameState{
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
 		scores.resetScore();
 		gameObjects.clear();
-		
 		player = new Player(100, 100, 3);
 		gameObjects.add(player);
 		for(int i = 0; i < Game.START_ZOMBIES; i++) {
@@ -41,14 +40,14 @@ public class Play extends BasicGameState{
 
 	public void render(GameContainer gc, StateBasedGame sbg,
 			Graphics g) {
-		
+		g.setBackground(Color.gray);
 		// Render alle GameObjecte
 		for(GameObject gameObject : Play.gameObjects) {
 			gameObject.render();
 			//g.draw(gameObject.getHitbox());
 		}
 		
-		g.drawString("Score: " + scores.getScore() + "    Multi: " + scores.getMulti()+"x", 150, 10);
+		g.drawString("Score: " + scores.getScore() + "    Multi: " + scores.getMulti()+"x   Highscore: "+highscore, 120, 10);
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int arg1) {
@@ -116,6 +115,7 @@ public class Play extends BasicGameState{
 	
 	private int state;
 	public static Score scores = new Score();
+	public static int highscore = 0;
 	public static boolean playerDead = false;
 	public static Player player;
 	public static List<objects.GameObject> toDeleteObjects = new ArrayList<GameObject>();

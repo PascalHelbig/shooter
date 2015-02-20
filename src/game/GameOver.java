@@ -9,8 +9,6 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
-import org.newdawn.slick.state.*;
-import org.newdawn.slick.*;
 
 public class GameOver extends BasicGameState{
 
@@ -25,6 +23,10 @@ public class GameOver extends BasicGameState{
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.drawString("Game Over...\nDein Score: "+Play.scores.getScore()+"\n\nDrücke Leertaste oder Controller 'X' um fortzufahren", 100, 300);
+		g.setBackground(Color.black);
+		if(Play.highscore < Play.scores.getScore()){
+			Play.highscore = Play.scores.getScore();
+		}
 	}
 
 	@Override
