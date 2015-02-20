@@ -52,6 +52,10 @@ public class Player extends GameObject {
 		}
 	}
 	
+	public void addHeart(){
+		this.healthbar.addLife();	
+	}
+	
 	public boolean isPlayerDead(){
 		return (this.healthbar.getLifes()==0);
 	}

@@ -1,5 +1,7 @@
 package objects;
 
+import game.Play;
+
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -10,6 +12,6 @@ public class HeartPowerUp extends PowerUp {
 	}
 
 	protected void use() {
-		System.out.println("Herz++");
+		Play.player.addHeart();
 	}
 }
