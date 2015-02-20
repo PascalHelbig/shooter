@@ -30,6 +30,6 @@ public class Healthbar{
 	public void loseLife() {
 		if(lifes > 0) {
 			lifes--;
-		}
+		} 
 	}
 }

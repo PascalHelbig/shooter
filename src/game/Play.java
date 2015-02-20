@@ -6,6 +6,8 @@ import java.util.List;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import objects.*;
 
@@ -17,7 +19,7 @@ public class Play extends BasicGameState{
 	
 	public void init(GameContainer gc, StateBasedGame sbg) {
 		try {
-			player = new Player(100, 100, 10);
+			player = new Player(100, 100, 3);
 			gameObjects.add(player);
 			setZombie(300,200);
 			setZombie(500,200);
@@ -43,6 +45,11 @@ public class Play extends BasicGameState{
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int arg1) {
+		
+		if(player.isPlayerDead()){
+			sbg.enterState(Game.MENU,new FadeOutTransition(Color.white), new FadeInTransition(Color.white));
+		}
+		
 		player.checkInputs(gc.getInput());
 		
 		updateAllObjects();
@@ -51,6 +58,8 @@ public class Play extends BasicGameState{
 		checkPlayerAlive();
 		scores.addScore();
 		System.out.println(scores.getScore());
+		
+		
 		
 	
 	}

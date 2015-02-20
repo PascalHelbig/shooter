@@ -51,6 +51,10 @@ public class Player extends GameObject {
 		}
 	}
 	
+	public boolean isPlayerDead(){
+		return (this.healthbar.getLifes()==0);
+	}
+	
 	public static double safeTime = 0.5;
 	private Healthbar healthbar;
 	public long lastHeartLost;

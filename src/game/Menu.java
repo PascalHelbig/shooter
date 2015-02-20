@@ -1,5 +1,7 @@
 package game;
 
+import objects.Player;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -30,6 +32,7 @@ public class Menu extends BasicGameState{
 		if(gc.getInput().isKeyPressed(Input.KEY_SPACE) || gc.getInput().isControlPressed(6, 0)) {
 			sbg.enterState(Game.PLAY, new FadeOutTransition(Color.white), new FadeInTransition(Color.white));
 		}
+	
 	}
 
 	@Override
