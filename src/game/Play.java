@@ -10,6 +10,8 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import objects.*;
+import org.newdawn.slick.state.*;
+import java.util.*;
 
 public class Play extends BasicGameState{
 	
@@ -21,12 +23,12 @@ public class Play extends BasicGameState{
 		try {
 			player = new Player(100, 100, 3);
 			gameObjects.add(player);
-			setZombie(300,200);
-			setZombie(500,200);
-			setZombie(600,600);
-			setZombie(350,300);
-			setZombie(500,250);
-			setZombie(600,500);
+			setZombie();
+			setZombie();
+			setZombie();
+			setZombie();
+			setZombie();
+			setZombie();
 			
 
 		} catch (SlickException e) {
@@ -61,9 +63,9 @@ public class Play extends BasicGameState{
 		return this.state;
 	}
 	
-	public void setZombie(int x, int y){
+	public void setZombie(){
 		try {
-			gameObjects.add(new Zombie(x,y));
+			gameObjects.add(new Zombie());
 		} catch (Exception e){
 			e.printStackTrace();
 		}
@@ -78,10 +80,10 @@ public class Play extends BasicGameState{
 			getroffenerZombie = null;
 			try {
 				if (killingCounter % 5 == 0){
-					Play.gameObjects.add(new Zombie(50,50));
-					Play.gameObjects.add(new Zombie(300,250));
+					Play.gameObjects.add(new Zombie());
+					Play.gameObjects.add(new Zombie());
 				} else {
-					Play.gameObjects.add(new Zombie(50,50));
+					Play.gameObjects.add(new Zombie());
 				}
 			} catch (SlickException e) {
 				e.printStackTrace();

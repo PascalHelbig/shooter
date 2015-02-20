@@ -1,5 +1,6 @@
 package objects;
 
+import game.Game;
 import game.Play;
 
 import org.newdawn.slick.Image;
@@ -13,8 +14,12 @@ public class Zombie extends GameObject {
 	float lastHeartLost;
 	float safeTime = (float) 0.5;
 
-	public Zombie(int pos_x, int pos_y) throws SlickException {
-		super(new Image("res/images/zombie.png"), pos_x, pos_y, (float)1);
+	public Zombie() throws SlickException {
+		super(new Image("res/images/zombie.png"), 0, 0, (float)1);
+		do {
+			pos_x = (float) (Game.WIDTH * Math.random());
+			pos_y = (float) (Game.HEIGHT * Math.random());
+		} while (distanceTo(Play.player) < Game.SPAWN_DISTANCE);		
 	}
 	
 	public void update() {

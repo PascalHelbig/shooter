@@ -1,9 +1,12 @@
 package objects;
 
 
+import javax.jws.Oneway;
+
+import game.Game;
+
 import org.newdawn.slick.*;
-import org.newdawn.slick.geom.Rectangle;
-import org.newdawn.slick.geom.Shape;
+import org.newdawn.slick.geom.*;
 
 public class GameObject {
 
@@ -13,8 +16,6 @@ public class GameObject {
 	private float alt_pos_x;
 	private float alt_pos_y;
 	protected float speed;
-	private int max_x = 600;
-	private int max_y = 600;
 	protected float angle =0;
 		
 	protected Shape hitbox;
@@ -52,8 +53,8 @@ public class GameObject {
 	}
 
 	protected void moveDown() {
-		if(this.pos_y + speed + image.getHeight()/2 >= this.max_y) {
-			this.pos_y = this.max_y - image.getHeight()/2;
+		if(this.pos_y + speed + image.getHeight()/2 >= Game.HEIGHT) {
+			this.pos_y = Game.HEIGHT - image.getHeight()/2;
 		} else {
 			this.pos_y += speed;
 		}
@@ -68,8 +69,8 @@ public class GameObject {
 	}
 
 	protected void moveRight() {
-		if(this.pos_x + speed + image.getWidth()/2 >= this.max_x) {
-			this.pos_x = this.max_x - image.getWidth()/2;
+		if(this.pos_x + speed + image.getWidth()/2 >= Game.WIDTH) {
+			this.pos_x = Game.WIDTH - image.getWidth()/2;
 		} else {
 			this.pos_x += speed;
 		}
@@ -101,6 +102,13 @@ public class GameObject {
 
 	public boolean intersects(GameObject object) {
 		return this.getHitbox().intersects(object.getHitbox());
+	}
+
+	protected float distanceTo(GameObject object) {
+		float x = this.pos_x - object.pos_x;
+		float y = this.pos_y - object.pos_y;
+		
+		return (float) Math.sqrt(x*x + y*y);
 	}
 
 	

@@ -9,7 +9,7 @@ public class Main {
 	public static void main(String[] arg) {
 		try {
 			AppGameContainer agc = new AppGameContainer(new Game("unser Game"));
-			agc.setDisplayMode(600, 600, false);
+			agc.setDisplayMode(Game.WIDTH, Game.HEIGHT, false);
 			agc.setTargetFrameRate(60);
 			agc.start();
 		} catch (SlickException e) {
