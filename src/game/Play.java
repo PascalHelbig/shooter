@@ -23,6 +23,7 @@ public class Play extends BasicGameState{
 	
 	@Override
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+		scores.resetScore();
 		gameObjects.clear();
 		
 		player = new Player(100, 100, 3);
@@ -42,6 +43,8 @@ public class Play extends BasicGameState{
 			gameObject.render();
 			//g.draw(gameObject.getHitbox());
 		}
+		
+		g.drawString("Score: " + scores.getScore() + "    Multi: " + scores.getMulti()+"x", 150, 10);
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int arg1) {
@@ -55,7 +58,7 @@ public class Play extends BasicGameState{
 		checkZombieDead();
 		for(GameObject gameObject : Play.gameObjects) {
 			gameObject.update();
-		}	
+		}
 	}
 	
 	public int getID() {
@@ -77,6 +80,8 @@ public class Play extends BasicGameState{
 			Play.gameObjects.remove(kugel);
 			killingCounter++;
 			getroffenerZombie = null;
+			scores.addScore();
+			scores.addMulti();
 			try {
 				if (killingCounter % 5 == 0){
 					Play.gameObjects.add(new Zombie());

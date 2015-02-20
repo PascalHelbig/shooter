@@ -1,5 +1,7 @@
 package objects;
 
+import game.Game;
+
 import org.newdawn.slick.SlickException;
 
 public class Healthbar{
@@ -11,11 +13,9 @@ public class Healthbar{
 	}
 	
 	public void render( ) {
-		int x_axis= 600;
-		for(int i=1 ; i <= this.lifes; i++){			
-			x_axis-=40;
+		for(int i=1 ; i <= this.lifes; i++){
 			try {
-				Heart heart = new Heart(x_axis, 30);
+				Heart heart = new Heart(Game.WIDTH - 40 * i, 30);
 				heart.render();				
 			} catch (SlickException e) {
 				e.printStackTrace();
