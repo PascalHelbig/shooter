@@ -24,12 +24,12 @@ public class GameOver extends BasicGameState{
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		g.drawString("Game Over...\nDrücke Leertaste oder Controller 'X' um fortzufahren", 100, 300);
+		g.drawString("Game Over...\nDein Score: "+Play.scores.getScore()+"\n\nDrücke Leertaste oder Controller 'X' um fortzufahren", 100, 300);
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int arg2) 	throws SlickException {
-		if(gc.getInput().isKeyPressed(Input.KEY_SPACE) || gc.getInput().isControlPressed(6, 0)) {
+		if(gc.getInput().isKeyPressed(Input.KEY_SPACE) || gc.getInput().isControlPressed(6, Game.CONTROLLER_PORT)) {
 			sbg.enterState(Game.MENU, new FadeOutTransition(Color.white), new FadeInTransition(Color.white));
 		}
 	}
