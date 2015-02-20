@@ -13,11 +13,5 @@ public class HeartPowerUp extends PowerUp {
 
 	protected void use() {
 		Play.player.addHeart();
-		//Play.player.changeSpeed(5, 5000);
-		for(GameObject gameObject : Play.gameObjects) {
-			if (gameObject instanceof Zombie) {
-				gameObject.changeSpeed(-1, 10000);
-			}
-		}
 	}
 }

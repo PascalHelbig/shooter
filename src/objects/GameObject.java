@@ -19,6 +19,9 @@ public class GameObject {
 		
 	protected Shape hitbox;
 
+	private int max_x = 600;
+	private int max_y = 600;
+
 	public GameObject(Image image, float pos_x, float pos_y, float speed) {
 		this.image = image;
 		this.pos_x = pos_x;
@@ -122,7 +125,7 @@ public class GameObject {
 	public void destroy() {
 	}
 
-	public void changeSpeed(int change, int duration) {	
+	public void changeSpeed(float change, int duration) {	
 		this.speed_change += change;
 		this.speed += change;
 		this.time_speed_change_ends = System.currentTimeMillis() + duration;

@@ -10,7 +10,10 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import objects.*;
+
 import java.util.*;
+
+import org.newdawn.slick.state.*;
 
 public class Play extends BasicGameState{
 	
@@ -30,6 +33,7 @@ public class Play extends BasicGameState{
 		player = new Player(100, 100, 3);
 		gameObjects.add(player);
 		gameObjects.add(new HeartPowerUp());
+		gameObjects.add(new FreezePowerUp());
 		for(int i = 0; i < Game.START_ZOMBIES; i++) {
 			setZombie();
 		}
@@ -83,6 +87,10 @@ public class Play extends BasicGameState{
 		
 	}
 	
+	private void checkZombieDead() {
+		throw new UnsupportedOperationException();
+	}
+
 	private int state;
 	public static Score scores = new Score();
 	public static boolean playerDead = false;
@@ -91,4 +99,6 @@ public class Play extends BasicGameState{
 	public static Shot kugel = null;
 	public static Zombie getroffenerZombie = null;
 	public static Collection<GameObject> gameObjects = new ArrayList<GameObject>();
+	public Collection<GameObject> attribute;
+	private int killingCounter = 0;
 }
