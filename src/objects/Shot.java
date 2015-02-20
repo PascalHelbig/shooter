@@ -26,13 +26,12 @@ public class Shot extends GameObject {
 				}
 			}
 		}
+		if (outOfField()){
+			System.out.println("drauﬂen");
+			Play.toDeleteObjects.add(this);
+		}
 		
 		super.update();
-	}
-
-	public void Shot2(float pos_x, float pos_y, float angle)
-			throws SlickException {
-		throw new UnsupportedOperationException();
 	}
 
 	

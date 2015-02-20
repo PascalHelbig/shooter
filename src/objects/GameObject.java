@@ -82,6 +82,10 @@ public class GameObject {
 		}
 	}
 
+	public boolean outOfField(){
+		Rectangle field = new Rectangle(0, 0, Game.WIDTH, Game.HEIGHT);
+		return	!getHitbox().intersects(field);
+	}
 	
 	protected void turnObject(){
 		// Wenn sich die Position nicht geändert hat, dann muss nichts gedreht werden.
