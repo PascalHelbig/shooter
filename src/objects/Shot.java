@@ -22,7 +22,6 @@ public class Shot extends GameObject {
 				if(intersects(gameObject)) {
 					Play.toDeleteObjects.add(gameObject);
 					Play.toDeleteObjects.add(this);
-					Play.kugel = this;
 					return;
 				}
 			}
@@ -31,9 +30,5 @@ public class Shot extends GameObject {
 		super.update();
 	}
 
-	public void Shot2(float pos_x, float pos_y, float angle)
-			throws SlickException {
-		throw new UnsupportedOperationException();
-	}
 	
 }

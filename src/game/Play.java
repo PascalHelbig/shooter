@@ -34,7 +34,7 @@ public class Play extends BasicGameState{
 		gameObjects.add(player);
 		gameObjects.add(new HeartPowerUp());
 		gameObjects.add(new FreezePowerUp());
-		gameObjects.add(new FreezePowerUp());
+		gameObjects.add(new KillAllPowerUp());
 		for(int i = 0; i < Game.START_ZOMBIES; i++) {
 			setZombie();
 		}
@@ -88,10 +88,11 @@ public class Play extends BasicGameState{
 		
 	}
 	
-	private void checkZombieDead() {
-		throw new UnsupportedOperationException();
+	public void initPowerUps(){
+		
 	}
 
+	
 	private int state;
 	public static Score scores = new Score();
 	public static boolean playerDead = false;
@@ -102,4 +103,5 @@ public class Play extends BasicGameState{
 	public static Collection<GameObject> gameObjects = new ArrayList<GameObject>();
 	public Collection<GameObject> attribute;
 	private int killingCounter = 0;
+	private PowerUp specials[];
 }
