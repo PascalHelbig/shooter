@@ -24,7 +24,7 @@ public class GameOver extends BasicGameState{
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		g.drawString("Game Over", 100, 300);
+		g.drawString("Game Over...\nDrücke Leertaste oder Controller 'X' um fortzufahren", 100, 300);
 	}
 
 	@Override

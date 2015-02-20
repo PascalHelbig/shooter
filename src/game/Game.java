@@ -20,8 +20,10 @@ public class Game extends StateBasedGame{
 	public void initStatesList(GameContainer gc) throws SlickException {
 		addState(new Menu(MENU));
 		addState(new Play(PLAY));		
+		addState(new GameOver(GAME_OVER));	
 	}
 
 	public static final int MENU = 0;
 	public static final int PLAY = 1;
+	public static final int GAME_OVER= 2;
 }

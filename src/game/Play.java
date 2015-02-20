@@ -47,7 +47,7 @@ public class Play extends BasicGameState{
 	public void update(GameContainer gc, StateBasedGame sbg, int arg1) {
 		
 		if(player.isPlayerDead()){
-			sbg.enterState(Game.MENU,new FadeOutTransition(Color.white), new FadeInTransition(Color.white));
+			sbg.enterState(Game.GAME_OVER,new FadeOutTransition(Color.white), new FadeInTransition(Color.white));
 		}
 		
 		player.checkInputs(gc.getInput());
