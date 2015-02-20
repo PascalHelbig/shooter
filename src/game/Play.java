@@ -34,6 +34,7 @@ public class Play extends BasicGameState{
 		gameObjects.add(player);
 		gameObjects.add(new HeartPowerUp());
 		gameObjects.add(new FreezePowerUp());
+		gameObjects.add(new FreezePowerUp());
 		for(int i = 0; i < Game.START_ZOMBIES; i++) {
 			setZombie();
 		}
