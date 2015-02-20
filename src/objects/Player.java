@@ -48,6 +48,7 @@ public class Player extends GameObject {
 		if((this.lastHeartLost + safeTime*1000) < System.currentTimeMillis()) {
 			this.healthbar.loseLife();
 			this.lastHeartLost = System.currentTimeMillis();
+			Play.scores.resetMulti();
 		}
 	}
 	

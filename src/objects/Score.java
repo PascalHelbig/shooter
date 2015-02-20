@@ -23,4 +23,8 @@ public class Score {
 	public int getMulti(){
 		return multiplyer;
 	}
+	
+	public void resetScore() {
+		score = 0;
+	}
 }
