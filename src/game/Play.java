@@ -37,6 +37,7 @@ public class Play extends BasicGameState{
 		super.enter(container, game);
 		nextZombieDistance = 0;
 		startTime = System.currentTimeMillis();
+		Zombie.count = 0;
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg,
@@ -127,11 +128,18 @@ public class Play extends BasicGameState{
 						}	
 						gameObjects.add(new ShootPowerUp()); 
 						break;
+					case 4:
+						gameObjects.add(new SpeedPowerUp());
+						break;
 				}
 			} catch (SlickException e){
 				e.printStackTrace();
 			}
 		} while (!neuesPowerUpGefunden);
+	}
+
+	public void initPowerUps() {
+		throw new UnsupportedOperationException();
 	}
 
 	private int state;

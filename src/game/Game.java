@@ -13,7 +13,7 @@ public class Game extends StateBasedGame{
 	public static final int HEIGHT = 700;
 	public static final int SPAWN_DISTANCE = 300;
 	public static final int START_ZOMBIES = 3;
-	public static final int NUMBER_OF_POWERUPS = 4;
+	public static final int NUMBER_OF_POWERUPS = 5;
 	
 	public Game(String name) {
 		super(name);
