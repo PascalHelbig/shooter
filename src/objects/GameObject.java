@@ -20,6 +20,9 @@ public class GameObject {
 		
 	protected Shape hitbox;
 
+	private int max_x = 600;
+	private int max_y = 600;
+
 	public GameObject(Image image, float pos_x, float pos_y, float speed) {
 		this.image = image;
 		this.pos_x = pos_x;
@@ -38,8 +41,7 @@ public class GameObject {
 		turnObject();
 		this.alt_pos_x = this.pos_x;
 		this.alt_pos_y = this.pos_y;
-		this.hitbox.setCenterX(pos_x);
-		this.hitbox.setCenterY(pos_y);
+		setHitbox();
 	}
 		
 	protected void moveUp() {
@@ -109,6 +111,11 @@ public class GameObject {
 		float y = this.pos_y - object.pos_y;
 		
 		return (float) Math.sqrt(x*x + y*y);
+	}
+
+	protected void setHitbox() {
+		this.hitbox.setCenterX(pos_x);
+		this.hitbox.setCenterY(pos_y);
 	}
 
 	

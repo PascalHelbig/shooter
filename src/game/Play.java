@@ -28,6 +28,7 @@ public class Play extends BasicGameState{
 		
 		player = new Player(100, 100, 3);
 		gameObjects.add(player);
+		gameObjects.add(new HeartPowerUp());
 		for(int i = 0; i < Game.START_ZOMBIES; i++) {
 			setZombie();
 		}
@@ -94,6 +95,8 @@ public class Play extends BasicGameState{
 			}
 		}
 	}
+	
+
 	
 	private int state;
 	public static Score scores = new Score();
