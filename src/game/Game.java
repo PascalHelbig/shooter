@@ -3,6 +3,8 @@ package game;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.*;
+import org.newdawn.slick.*;
 
 public class Game extends StateBasedGame{
 	

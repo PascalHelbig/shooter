@@ -118,5 +118,8 @@ public class GameObject {
 		this.hitbox.setCenterY(pos_y);
 	}
 
+	public void destroy() {
+	}
+
 	
 }

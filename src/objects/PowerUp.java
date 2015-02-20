@@ -23,6 +23,7 @@ public class PowerUp extends GameObject {
 	public void update() {
 		if (intersects(Play.player)){
 			use();
+			Play.toDeleteObjects.add(this);
 		}
 	}
 	

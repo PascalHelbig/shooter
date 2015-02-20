@@ -10,6 +10,7 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import objects.*;
+import java.util.*;
 
 public class Play extends BasicGameState{
 	
@@ -56,10 +57,17 @@ public class Play extends BasicGameState{
 		
 		player.checkInputs(gc.getInput());
 		
-		checkZombieDead();
+		//checkZombieDead();
 		for(GameObject gameObject : Play.gameObjects) {
 			gameObject.update();
 		}
+		
+		for(GameObject gameObject : Play.toDeleteObjects) {
+			System.out.println("was löschen!");
+			gameObject.destroy();
+			gameObjects.remove(gameObject);
+		}
+		Play.toDeleteObjects.clear();
 	}
 	
 	public int getID() {
@@ -75,37 +83,12 @@ public class Play extends BasicGameState{
 		
 	}
 	
-	private void checkZombieDead(){
-		if(getroffenerZombie != null) {
-			Play.gameObjects.remove(getroffenerZombie);
-			Play.gameObjects.remove(kugel);
-			killingCounter++;
-			getroffenerZombie = null;
-			scores.addScore();
-			scores.addMulti();
-			try {
-				if (killingCounter % 5 == 0){
-					Play.gameObjects.add(new Zombie());
-					Play.gameObjects.add(new Zombie());
-				} else {
-					Play.gameObjects.add(new Zombie());
-				}
-			} catch (SlickException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	
-	
-
-	
 	private int state;
 	public static Score scores = new Score();
 	public static boolean playerDead = false;
-	private int killingCounter = 0;
 	public static Player player;
-	public static List<objects.GameObject> gameObjects = new ArrayList<GameObject>();
-	public static Zombie getroffenerZombie = null;
+	public static List<objects.GameObject> toDeleteObjects = new ArrayList<GameObject>();
 	public static Shot kugel = null;
+	public static Zombie getroffenerZombie = null;
+	public static Collection<GameObject> gameObjects = new ArrayList<GameObject>();
 }
