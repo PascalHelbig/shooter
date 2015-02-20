@@ -5,7 +5,9 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Game extends StateBasedGame{
-
+	
+	public static final int CONTROLLER_PORT = 2;
+	
 	public Game(String name) {
 		super(name);
 	}
