@@ -23,6 +23,10 @@ public class Zombie extends GameObject {
 
 	public Zombie() throws SlickException {
 		super(new Image("res/images/zombie.png"), 0, 0, (float)1);
+		if(Math.random() < Game.CHANCE_FOR_RAGE_ZOMBIE){
+			this.image = new Image("res/images/rageZombie.png");
+			this.speed = (float)3;
+		}
 		do {
 			pos_x = (float) (Game.WIDTH * Math.random());
 			pos_y = (float) (Game.HEIGHT * Math.random());
