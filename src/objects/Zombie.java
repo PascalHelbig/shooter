@@ -30,7 +30,7 @@ public class Zombie extends GameObject {
 		move(this.angleTo(Play.player));
 		super.update();
 		
-		if(getHitbox().intersects(Play.player.getHitbox())) {
+		if(intersects(Play.player)) {
 			hitPlayer();
 		}
 	}
@@ -48,7 +48,7 @@ public class Zombie extends GameObject {
 		
 		for(GameObject gameObject : Play.gameObjects) {
 			if(gameObject instanceof heart) {
-				if(getHitbox().intersects(Play.player.getHitbox())) {
+				if(intersects(Play.player)) {
 					if (System.currentTimeMillis() > (Player.lastHeartLost + Player.safeTime*1000)){
 						Play.verlorenesHerz = (heart) gameObject;
 						Player.lastHeartLost=System.currentTimeMillis();

@@ -19,7 +19,7 @@ public class Shot extends GameObject {
 				
 		for(GameObject gameObject : Play.gameObjects) {
 			if(gameObject instanceof Zombie) {
-				if(getHitbox().intersects(gameObject.getHitbox())) {
+				if(intersects(gameObject)) {
 					Play.getroffenerZombie = (Zombie) gameObject;
 					Play.kugel = this;
 					Play.scores.addScore();

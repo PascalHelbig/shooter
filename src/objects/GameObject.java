@@ -102,5 +102,9 @@ public class GameObject {
 		return this.hitbox;
 	}
 
+	public boolean intersects(GameObject object) {
+		return this.getHitbox().intersects(object.getHitbox());
+	}
+
 	
 }

@@ -10,6 +10,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import objects.*;
 
 import java.util.*;
+import org.newdawn.slick.state.*;
 
 public class Play extends BasicGameState{
 	
