@@ -14,6 +14,7 @@ public class Zombie extends GameObject {
 	float zombieX;
 	
 	private static int killCounter = 0;
+	public static int count = 0;
 	
 	float lastHeartLost;
 	float safeTime = (float) 0.5;
@@ -25,12 +26,7 @@ public class Zombie extends GameObject {
 			pos_y = (float) (Game.HEIGHT * Math.random());
 		} while (distanceTo(Play.player) < Game.SPAWN_DISTANCE);
 		
-		/*
-		killCounter++;
-		if((killCounter % 5) == 0) {
-			Play.attribute.add(new Zombie());
-		}
-		*/
+		count++;
 	}
 	
 	public void update() {
@@ -54,18 +50,10 @@ public class Zombie extends GameObject {
 	public void destroy() {
 		killCounter++;
 		Play.scores.addScore();
-		Play.scores.addMulti();		
-		try {
-			Play.gameObjects.add(new Zombie());
-			if((killCounter % 5) == 0) {
-				Play.gameObjects.add(new Zombie());
-			}
-			if((killCounter % 30) == 0) {
-				Play.createPowerUp();			
-			}
-			
-		} catch (SlickException e) {
-			e.printStackTrace();
+		Play.scores.addMulti();
+		
+		if((killCounter % 10) == 0) {
+			Play.createPowerUp();			
 		}
 	}
 		

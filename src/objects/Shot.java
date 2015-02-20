@@ -30,5 +30,10 @@ public class Shot extends GameObject {
 		super.update();
 	}
 
+	public void Shot2(float pos_x, float pos_y, float angle)
+			throws SlickException {
+		throw new UnsupportedOperationException();
+	}
+
 	
 }

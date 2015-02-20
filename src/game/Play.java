@@ -35,7 +35,8 @@ public class Play extends BasicGameState{
 			setZombie();
 		}
 		super.enter(container, game);
-
+		nextZombieDistance = 0;
+		startTime = System.currentTimeMillis();
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg,
@@ -55,8 +56,23 @@ public class Play extends BasicGameState{
 		if(player.isPlayerDead()){
 			sbg.enterState(Game.GAME_OVER,new FadeOutTransition(Color.white), new FadeInTransition(Color.white));
 		}
-		
 		player.checkInputs(gc.getInput());
+		
+
+		try {
+			if(System.currentTimeMillis() > (lastZombie + nextZombieDistance)) {
+				this.gameObjects.add(new Zombie());
+				
+				lastZombie = System.currentTimeMillis();
+
+				nextZombieDistance = (int) 300 + (1000* 10/(Zombie.count + 1));
+				System.out.println(nextZombieDistance);
+			}
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		//checkZombieDead();
 		for(GameObject gameObject : Play.gameObjects) {
@@ -64,7 +80,6 @@ public class Play extends BasicGameState{
 		}
 		
 		for(GameObject gameObject : Play.toDeleteObjects) {
-			System.out.println("was löschen!");
 			gameObject.destroy();
 			gameObjects.remove(gameObject);
 		}
@@ -113,6 +128,11 @@ public class Play extends BasicGameState{
 	}
 
 	
+	public void initPowerUps() {
+		throw new UnsupportedOperationException();
+	}
+
+
 	private int state;
 	public static Score scores = new Score();
 	public static int highscore = 0;
@@ -125,4 +145,7 @@ public class Play extends BasicGameState{
 	public Collection<GameObject> attribute;
 	private int killingCounter = 0;
 	public static PowerUp specials[];
+	private long lastZombie = 0;
+	private long nextZombieDistance = 10000;
+	private long startTime;
 }
