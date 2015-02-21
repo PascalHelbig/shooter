@@ -15,8 +15,10 @@ public class Zombie extends GameObject {
 	
 	private static int killCounter = 0;
 	public static int count = 0;
+	// For Image Change ---
+	public boolean freezed = false;
+	// --- Image change end
 	
-
 	float lastHeartLost;
 	float safeTime = (float) 0.5;
 
@@ -26,6 +28,7 @@ public class Zombie extends GameObject {
 		if(Math.random() < Game.CHANCE_FOR_RAGE_ZOMBIE){
 			this.image = new Image("res/images/rageZombie.png");
 			this.speed = (float)3;
+			this.oldImage = this.image;
 		}
 		do {
 			pos_x = (float) (Game.WIDTH * Math.random());
@@ -36,6 +39,9 @@ public class Zombie extends GameObject {
 	}
 	
 	public void update() {
+		// For Image Change ---
+		freezed = updateImage(freezed);
+		// --- Image change end
 		move(this.angleTo(Play.player));
 		super.update();
 		
@@ -63,8 +69,7 @@ public class Zombie extends GameObject {
 		if((killCounter % 10) == 0) {
 			Play.createPowerUp();			
 		}
-	}
-		
+	}		
 }
 	
 

@@ -38,6 +38,8 @@ public class Play extends BasicGameState{
 		nextZombieDistance = 0;
 		startTime = System.currentTimeMillis();
 		Zombie.count = 0;
+		gameObjects.add(new FreezePowerUp());
+		gameObjects.add(new FreezePowerUp()); 
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg,
