@@ -65,13 +65,6 @@ public class Player extends GameObject {
 		}
 	}
 	
-	public void checkShotItemTime(){
-		if (System.currentTimeMillis() > pickUpShotTime + 20000){
-			shots=1;
-		} 
-	}
-	
-	
 	public void resetShots(){
 		Player.shots=1;
 		ShootPowerUp.shotsOnScreen=0;
@@ -89,8 +82,14 @@ public class Player extends GameObject {
 		return (this.healthbar.getLifes()==0);
 	}
 	
-	public static long pickUpShotTime = 0;
+	public void checkShotItemTime(){
+		if (System.currentTimeMillis() > pickUpShotTime + 20000){
+			shots=1;
+		} 
+	}
+	
 	public static double safeTime = 0.5;
+	public static long pickUpShotTime = 0;
 	private Healthbar healthbar;
 	public long lastHeartLost;
 	public static int shots = 1;

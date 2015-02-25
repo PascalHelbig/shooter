@@ -24,7 +24,6 @@ public class PowerUp extends GameObject {
 		if (intersects(Play.player)){
 			use();
 			Play.toDeleteObjects.add(this);
-			
 		}
 	}
 	

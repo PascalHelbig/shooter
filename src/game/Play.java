@@ -27,7 +27,6 @@ public class Play extends BasicGameState{
 	
 	@Override
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-		Zombie.count=Game.START_ZOMBIES;
 		scores.resetScore();
 		gameObjects.clear();
 		player = new Player(100, 100, 3);
@@ -38,6 +37,7 @@ public class Play extends BasicGameState{
 		super.enter(container, game);
 		nextZombieDistance = 0;
 		startTime = System.currentTimeMillis();
+		Zombie.count = 0;
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg,
@@ -53,6 +53,7 @@ public class Play extends BasicGameState{
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int arg1) {
+		
 		player.checkShotItemTime();
 		
 		if(player.isPlayerDead()){
@@ -129,11 +130,18 @@ public class Play extends BasicGameState{
 						}	
 						gameObjects.add(new ShootPowerUp()); 
 						break;
+					case 4:
+						gameObjects.add(new SpeedPowerUp());
+						break;
 				}
 			} catch (SlickException e){
 				e.printStackTrace();
 			}
 		} while (!neuesPowerUpGefunden);
+	}
+
+	public void initPowerUps() {
+		throw new UnsupportedOperationException();
 	}
 
 	private int state;
