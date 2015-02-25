@@ -83,8 +83,8 @@ public class Player extends GameObject {
 	}
 	
 	public void checkShotItemTime(){
-		if (System.currentTimeMillis() > pickUpShotTime + 20000){
-			shots=1;
+		if (System.currentTimeMillis() > pickUpShotTime + 10000){
+			resetShots();
 		} 
 	}
 	
