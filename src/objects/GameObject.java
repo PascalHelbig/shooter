@@ -16,11 +16,7 @@ public class GameObject {
 	private long time_speed_change_ends = 0;
 	protected float speed;
 	protected float angle =0;
-	// For Image Change ---
-	private long time_image_change_ends;
-	protected Image oldImage = null;
-	// --- Image change end
-	
+		
 	protected Shape hitbox;
 
 	private int max_x = 600;
@@ -28,9 +24,6 @@ public class GameObject {
 
 	public GameObject(Image image, float pos_x, float pos_y, float speed) {
 		this.image = image;
-		// For Image Change ---
-		this.oldImage = image;
-		// --- Image change end
 		this.pos_x = pos_x;
 		this.pos_y = pos_y;
 		this.alt_pos_x = pos_x;
@@ -141,27 +134,4 @@ public class GameObject {
 		this.speed += change;
 		this.time_speed_change_ends = System.currentTimeMillis() + duration;
 	}
-	// For Image Change ---
-	public void changeImage(String newImage, long duration){
-		try {
-			this.image = new Image(newImage);
-			this.image.rotate(this.angle);
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.time_image_change_ends = System.currentTimeMillis() + duration;
-	}
-	
-	public boolean updateImage(boolean condition){
-		if(System.currentTimeMillis() > this.time_image_change_ends && condition) {
-			this.image = this.oldImage;
-			return false;
-		} else if(condition){
-			return true;
-		} else {
-			return false;
-		}
-	}
-	// --- Image Change end
 }
