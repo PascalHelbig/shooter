@@ -145,12 +145,14 @@ public class GameObject {
 	}
 	// For Image Change ---
 	public void changeImage(String newImage, long duration){
-		try {
-			this.oldImage = image;
-			this.image = new Image(newImage);
-			this.image.rotate(this.angle);
-		} catch (SlickException e) {
-			e.printStackTrace();
+		if(this.image.getResourceReference() != newImage){
+			try {
+				this.oldImage = image;
+				this.image = new Image(newImage);
+				this.image.rotate(this.angle);
+			} catch (SlickException e) {
+				e.printStackTrace();
+			}
 		}
 		this.time_image_change_ends = System.currentTimeMillis() + duration;
 	}

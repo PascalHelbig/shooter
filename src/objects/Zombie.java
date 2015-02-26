@@ -2,6 +2,7 @@ package objects;
 
 import game.Game;
 import game.Play;
+import objects.GameObject;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
