@@ -12,7 +12,6 @@ public class GameObject {
 	protected float pos_y;
 	private float alt_pos_x;
 	private float alt_pos_y;
-	protected float old_speed;
 	private float speed_change = 0;
 	private long time_speed_change_ends = 0;
 	protected float speed;
@@ -138,11 +137,9 @@ public class GameObject {
 	}
 
 	public void changeSpeed(float change, int duration) {	
-		if (this.speed <= 5){
-			this.speed_change += change;
-			this.speed += change;
-			this.time_speed_change_ends = System.currentTimeMillis() + duration;
-		} 
+		this.speed_change += change;
+		this.speed += change;
+		this.time_speed_change_ends = System.currentTimeMillis() + duration;
 	}
 	// For Image Change ---
 	public void changeImage(String newImage, long duration){
@@ -155,8 +152,6 @@ public class GameObject {
 		}
 		this.time_image_change_ends = System.currentTimeMillis() + duration;
 	}
-	
-
 	
 	public boolean updateImage(boolean condition){
 		if(System.currentTimeMillis() > this.time_image_change_ends && condition) {

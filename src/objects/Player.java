@@ -40,10 +40,6 @@ public class Player extends GameObject {
 						   	Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle));
 						   	Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+45f));
 						   	break;
-					default:Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle-45f));
-							Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle));
-							Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+45f));
-							break;	
 				}
 			} catch (SlickException e) {
 				e.printStackTrace();
@@ -82,14 +78,7 @@ public class Player extends GameObject {
 		return (this.healthbar.getLifes()==0);
 	}
 	
-	public void checkShotItemTime(){
-		if (System.currentTimeMillis() > pickUpShotTime + 10000){
-			resetShots();
-		} 
-	}
-	
 	public static double safeTime = 0.5;
-	public static long pickUpShotTime = 0;
 	private Healthbar healthbar;
 	public long lastHeartLost;
 	public static int shots = 1;
