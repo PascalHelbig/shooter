@@ -13,6 +13,7 @@ public class PowerUp extends GameObject {
 			pos_y = (float) (Game.HEIGHT * Math.random());
 		} while (distanceTo(Play.player) < Game.SPAWN_DISTANCE);
 		setHitbox();
+		Play.incPowerupCounter();
 	}
 
 	protected void use(){

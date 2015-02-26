@@ -36,6 +36,7 @@ public class Play extends BasicGameState{
 		nextZombieDistance = 0;
 		startTime = System.currentTimeMillis();
 		Zombie.count = Game.START_ZOMBIES;
+		resetPowerupCounter();
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg,
@@ -96,36 +97,37 @@ public class Play extends BasicGameState{
 	public static void createPowerUp(){
 		boolean neuesPowerUpGefunden;
 		if (getPowerupCounter() < Game.MAX_POWERUP_ON_SCREEN){
-			incPowerupCounter();
-			System.out.println("create: "+getPowerupCounter());
-		do {
-			neuesPowerUpGefunden = true;
-			Random rand = new Random();
-			int i = rand.nextInt(Game.NUMBER_OF_POWERUPS);
-			switch (i){
-				case 0:
-					if((player.getLifes() + HeartPowerUp.heartsOnScreen) >= 5) {
-						neuesPowerUpGefunden = false; 
+			do {
+				neuesPowerUpGefunden = true;
+				Random rand = new Random();
+				int i = rand.nextInt(Game.NUMBER_OF_POWERUPS);
+				switch (i){
+					case 0:
+						if((player.getLifes() + HeartPowerUp.heartsOnScreen) >= 5) {
+							neuesPowerUpGefunden = false; 
+							break;
+						}
+						gameObjects.add(new HeartPowerUp());
 						break;
-					}
-					gameObjects.add(new HeartPowerUp());
-					break;
-				case 1: 
-					gameObjects.add(new FreezePowerUp()); 
-					break;
-				case 2: 
-					gameObjects.add(new KillAllPowerUp()); 
-					break;
-				case 3: 
-					if(player.shots == 3) {
-						neuesPowerUpGefunden = false; 
+					case 1: 
+						gameObjects.add(new FreezePowerUp()); 
 						break;
-					}	
-					gameObjects.add(new ShootPowerUp());
-					break;
-			}
-		} while (!neuesPowerUpGefunden);
-	  }
+					case 2: 
+						gameObjects.add(new KillAllPowerUp()); 
+						break;
+					case 3: 
+						if(player.shots == 3) {
+							neuesPowerUpGefunden = false; 
+							break;
+						}	
+						gameObjects.add(new ShootPowerUp());
+						break;
+					case 4: 
+						gameObjects.add(new SpeedPowerUp()); 
+						break;	
+				}
+			} while (!neuesPowerUpGefunden);
+		}
 	}
 
 	public static void incPowerupCounter(){
@@ -134,6 +136,10 @@ public class Play extends BasicGameState{
 	
 	public static void decPowerupCounter(){
 		powerupsOnScreen--;
+	}
+	
+	public static void resetPowerupCounter(){
+		powerupsOnScreen=0;
 	}
 	
 	public static int getPowerupCounter(){
