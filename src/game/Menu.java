@@ -20,12 +20,24 @@ public class Menu extends BasicGameState{
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		g.drawString("Spiel starten mit Leertaste oder Controller 'X'", 100, 300);
+		g.drawString("Schwierigkeit auswählen...\nLeicht - 1 - X\nMedium - 2 - Kreis\nHard - 3 - Dreieck\nDu wirst nicht überleben... - 4 - Viereck\n", 100, 300);
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int arg2) 	throws SlickException {
-		if(gc.getInput().isKeyPressed(Input.KEY_SPACE) || gc.getInput().isControlPressed(6, Game.CONTROLLER_PORT)) {
-			sbg.enterState(Game.PLAY, new FadeOutTransition(Color.white), new FadeInTransition(Color.white));
+		if(gc.getInput().isKeyPressed(Input.KEY_1) || gc.getInput().isControlPressed(6, Game.CONTROLLER_PORT)) {
+			sbg.enterState(Game.PLAY_EASY, new FadeOutTransition(Color.white), new FadeInTransition(Color.white));
+		}
+		if(gc.getInput().isKeyPressed(Input.KEY_2) || gc.getInput().isControlPressed(5, Game.CONTROLLER_PORT)) {
+			sbg.enterState(Game.PLAY_MEDIUM, new FadeOutTransition(Color.white), new FadeInTransition(Color.white));
+			System.out.println("medium");
+		}
+		if(gc.getInput().isKeyPressed(Input.KEY_3) || gc.getInput().isControlPressed(4, Game.CONTROLLER_PORT)) {
+			sbg.enterState(Game.PLAY_HARD, new FadeOutTransition(Color.white), new FadeInTransition(Color.white));
+			System.out.println("hard");
+		}
+		if(gc.getInput().isKeyPressed(Input.KEY_4) || gc.getInput().isControlPressed(7, Game.CONTROLLER_PORT)) {
+			sbg.enterState(Game.PLAY_ULTRA, new FadeOutTransition(Color.white), new FadeInTransition(Color.white));
+			System.out.println("ultra");
 		}
 	
 	}

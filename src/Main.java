@@ -13,7 +13,7 @@ public class Main {
 			agc.setTargetFrameRate(60);
 			agc.start();
 		} catch (SlickException e) {
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
 	}
 
