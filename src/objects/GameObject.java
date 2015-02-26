@@ -141,8 +141,7 @@ public class GameObject {
 		this.speed_change += change;
 		this.speed += change;
 		}
-		this.time_speed_change_ends = System.currentTimeMillis() + duration;
-		
+		this.time_speed_change_ends = System.currentTimeMillis() + duration;		
 	}
 	// For Image Change ---
 	public void changeImage(String newImage, long duration){
