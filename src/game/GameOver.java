@@ -22,7 +22,7 @@ public class GameOver extends BasicGameState{
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		g.drawString("Game Over...\nDein Score: " + Play.scores.getScore()
+		g.drawString("Game Over...\n\nDein Score: " + Play.scores.getScore()
 		+"\nHighscore: " + Play.highscore + newHigh
 		+"\nZombies getötet: " + Zombie.killCounter
 		+"\n\nDrücke Leertaste oder Controller 'X' um fortzufahren", 100, 300);
