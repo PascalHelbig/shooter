@@ -145,6 +145,13 @@ public class GameObject {
 	}
 	// For Image Change ---
 	public void changeImage(String newImage, long duration){
+		this.time_image_change_ends = System.currentTimeMillis() + duration;
+		
+		// Wenn das neue Bild das gleiche, wie vorher ist, dann ignorieren.
+		if(this.image.getResourceReference() == newImage) {
+			return;
+		}
+		
 		try {
 			this.oldImage = image;
 			this.image = new Image(newImage);
@@ -152,7 +159,6 @@ public class GameObject {
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
-		this.time_image_change_ends = System.currentTimeMillis() + duration;
 	}
 	
 	public void updateImage(){
