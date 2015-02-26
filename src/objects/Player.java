@@ -38,10 +38,20 @@ public class Player extends GameObject {
 					Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle-15f));
 				   	Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+15f));
 				   	break;
-				default:
+				case 3:
 					Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle-30f));
 					Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle));
 					Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+30f));
+					break;
+				default:
+					Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle-90f));
+					Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle));
+					Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+90f));
+					Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+180f));
+					Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle-45f));
+					Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+45f));
+					Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+135f));
+					Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+225f));
 					break;
 			}
 		}
