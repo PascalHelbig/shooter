@@ -35,13 +35,13 @@ public class Player extends GameObject {
 						Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle));
 						break;
 					case 2:	
-						Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle-22.5f));
-					   	Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+22.5f));
+						Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle-15f));
+					   	Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+15f));
 					   	break;
 					default:
-						Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle-45f));
+						Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle-30f));
 						Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle));
-						Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+45f));
+						Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+30f));
 						break;
 				}
 			} catch (SlickException e) {
@@ -66,7 +66,6 @@ public class Player extends GameObject {
 	
 	public void resetShots(){
 		this.shots=1;
-		ShootPowerUp.shotsOnScreen=0;
 	}
 	
 	public void addHeart(){
@@ -85,4 +84,5 @@ public class Player extends GameObject {
 	private Healthbar healthbar;
 	public long lastHeartLost;
 	public int shots = 1;
+	public long pickUpTimeShotPowerUp = 0;
 }

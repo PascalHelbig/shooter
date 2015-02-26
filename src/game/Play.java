@@ -37,9 +37,7 @@ public class Play extends BasicGameState{
 		super.enter(container, game);
 		nextZombieDistance = 0;
 		startTime = System.currentTimeMillis();
-		Zombie.count = 0;
-		gameObjects.add(new FreezePowerUp());
-		gameObjects.add(new FreezePowerUp()); 
+		Zombie.count = Game.START_ZOMBIES;
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg,
@@ -55,6 +53,9 @@ public class Play extends BasicGameState{
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int arg1) {
+		if(System.currentTimeMillis() > player.pickUpTimeShotPowerUp + 10000){
+			player.resetShots();
+		}
 		
 		if(player.isPlayerDead()){
 			sbg.enterState(Game.GAME_OVER,new FadeOutTransition(Color.white), new FadeInTransition(Color.white));
@@ -108,7 +109,7 @@ public class Play extends BasicGameState{
 			try{
 				switch (i){
 					case 0:
-						if((Play.player.getLifes() + HeartPowerUp.heartsOnScreen) >= 5) {
+						if((player.getLifes() + HeartPowerUp.heartsOnScreen) >= 5) {
 							neuesPowerUpGefunden = false; 
 							break;
 						}
@@ -121,7 +122,7 @@ public class Play extends BasicGameState{
 						gameObjects.add(new KillAllPowerUp()); 
 						break;
 					case 3: 
-						if(player.shots + ShootPowerUp.shotsOnScreen >= 3) {
+						if(player.shots == 3) {
 							neuesPowerUpGefunden = false; 
 							break;
 						}	
