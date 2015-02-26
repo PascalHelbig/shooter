@@ -37,7 +37,6 @@ public class Play extends BasicGameState{
 		}
 		super.enter(container, game);
 		nextZombieDistance = 0;
-		startTime = System.currentTimeMillis();
 		Zombie.count = Game.START_ZOMBIES;
 		PowerUp.countPowerUpsOnScreen = 0;
 	}
@@ -147,9 +146,6 @@ public class Play extends BasicGameState{
 	public static Shot kugel = null;
 	public static Zombie getroffenerZombie = null;
 	public static Collection<GameObject> gameObjects = new ArrayList<GameObject>();
-	public Collection<GameObject> attribute;
-	public static PowerUp specials[];
 	private long lastZombie = 0;
 	private long nextZombieDistance = 10000;
-	private long startTime;
 }
