@@ -64,7 +64,7 @@ public class Play extends BasicGameState{
 
 		try {
 			if(System.currentTimeMillis() > (lastZombie + nextZombieDistance)) {
-				this.gameObjects.add(new Zombie());
+				Play.gameObjects.add(new Zombie());
 				
 				lastZombie = System.currentTimeMillis();
 
@@ -72,12 +72,9 @@ public class Play extends BasicGameState{
 				System.out.println(nextZombieDistance);
 			}
 		} catch (SlickException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
-		//checkZombieDead();
 		for(GameObject gameObject : Play.gameObjects) {
 			gameObject.update();
 		}
@@ -140,13 +137,6 @@ public class Play extends BasicGameState{
 		} while (!neuesPowerUpGefunden);
 	}
 
-	public void initPowerUps() {
-		throw new UnsupportedOperationException();
-	}
-	
-
-	
-
 	private int state;
 	public static Score scores = new Score();
 	public static int highscore = 0;
@@ -157,7 +147,6 @@ public class Play extends BasicGameState{
 	public static Zombie getroffenerZombie = null;
 	public static Collection<GameObject> gameObjects = new ArrayList<GameObject>();
 	public Collection<GameObject> attribute;
-	private int killingCounter = 0;
 	public static PowerUp specials[];
 	private long lastZombie = 0;
 	private long nextZombieDistance = 10000;

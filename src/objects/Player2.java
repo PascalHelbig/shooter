@@ -5,7 +5,6 @@ import game.Play;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.*;
 
 public class Player2 extends GameObject{
 	public Player2(int pos_x, int pos_y) throws SlickException {		

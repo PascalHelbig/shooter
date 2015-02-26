@@ -9,8 +9,6 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
-import org.newdawn.slick.state.*;
-import org.newdawn.slick.*;
 
 public class GameOver extends BasicGameState{
 
@@ -37,7 +35,6 @@ public class GameOver extends BasicGameState{
 
 	@Override
 	public int getID() {
-		// TODO Auto-generated method stub
 		return this.state;
 	}
 	

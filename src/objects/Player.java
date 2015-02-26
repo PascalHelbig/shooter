@@ -66,7 +66,7 @@ public class Player extends GameObject {
 	}
 	
 	public void resetShots(){
-		Player.shots=1;
+		this.shots=1;
 		ShootPowerUp.shotsOnScreen=0;
 	}
 	
@@ -88,9 +88,9 @@ public class Player extends GameObject {
 		} 
 	}
 	
-	public static double safeTime = 0.5;
-	public static long pickUpShotTime = 0;
+	public double safeTime = 0.5;
+	public long pickUpShotTime = 0;
 	private Healthbar healthbar;
 	public long lastHeartLost;
-	public static int shots = 1;
+	public int shots = 1;
 }

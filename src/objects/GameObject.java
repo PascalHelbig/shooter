@@ -20,12 +20,8 @@ public class GameObject {
 	// For Image Change ---
 	private long time_image_change_ends;
 	protected Image oldImage = null;
-	// --- Image change end
-	
+	// --- Image change end	
 	protected Shape hitbox;
-
-	private int max_x = 600;
-	private int max_y = 600;
 
 	public GameObject(Image image, float pos_x, float pos_y, float speed) {
 		this.image = image;
@@ -150,7 +146,6 @@ public class GameObject {
 			this.image = new Image(newImage);
 			this.image.rotate(this.angle);
 		} catch (SlickException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.time_image_change_ends = System.currentTimeMillis() + duration;
