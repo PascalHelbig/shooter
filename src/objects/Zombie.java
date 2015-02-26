@@ -21,10 +21,14 @@ public class Zombie extends GameObject {
 	float safeTime = (float) 0.5;
 
 
-	public Zombie() throws SlickException {
-		super(new Image("res/images/zombie.png"), 0, 0, (float)1);
+	public Zombie() {
+		super("res/images/zombie.png", 0, 0, (float)1);
 		if(Math.random() < Game.CHANCE_FOR_RAGE_ZOMBIE){
-			this.image = new Image("res/images/rageZombie.png");
+			try {
+				this.image = new Image("res/images/rageZombie.png");
+			} catch (SlickException e) {
+				e.printStackTrace();
+			}
 			this.speed = (float)3;
 			this.oldImage = this.image;
 		}

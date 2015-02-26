@@ -1,14 +1,15 @@
 package objects;
 
+import org.newdawn.slick.Input;
+
 import game.Game;
 import game.Play;
 
-import org.newdawn.slick.*;
 
 public class Player extends GameObject {
 	
-	public Player(int pos_x, int pos_y, int life) throws SlickException {		
-		super(new Image("res/images/guy.png"), pos_x, pos_y, 5);
+	public Player(int pos_x, int pos_y, int life) {		
+		super("res/images/guy.png", pos_x, pos_y, 5);
 		this.healthbar = new Healthbar(life);
 	}
 
@@ -29,23 +30,19 @@ public class Player extends GameObject {
 		
 		
 		if(input.isKeyPressed(Input.KEY_SPACE) || input.isControlPressed(6, Game.CONTROLLER_PORT)) {
-			try {
-				switch (shots){
-					case 1:	
-						Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle));
-						break;
-					case 2:	
-						Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle-22.5f));
-					   	Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+22.5f));
-					   	break;
-					default:
-						Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle-45f));
-						Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle));
-						Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+45f));
-						break;
-				}
-			} catch (SlickException e) {
-				e.printStackTrace();
+			switch (shots){
+				case 1:	
+					Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle));
+					break;
+				case 2:	
+					Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle-22.5f));
+				   	Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+22.5f));
+				   	break;
+				default:
+					Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle-45f));
+					Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle));
+					Play.gameObjects.add(new Shot(this.pos_x, this.pos_y, this.angle+45f));
+					break;
 			}
 		}
 	

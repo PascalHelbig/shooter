@@ -2,13 +2,10 @@ package objects;
 
 import game.Play;
 
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
-
 public class FreezePowerUp extends PowerUp {
 
-	public FreezePowerUp() throws SlickException {
-		super(new Image("res/images/powerupFreeze.png"));
+	public FreezePowerUp(){
+		super("res/images/powerupFreeze.png");
 	}
 
 	protected void use() {

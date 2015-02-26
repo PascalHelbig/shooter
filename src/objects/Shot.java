@@ -2,13 +2,10 @@ package objects;
 
 import game.Play;
 
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
-
 public class Shot extends GameObject {
 
-	public Shot(float pos_x, float pos_y, float angle) throws SlickException {
-		super(new Image("res/images/laser.png"), pos_x, pos_y, 10);
+	public Shot(float pos_x, float pos_y, float angle) {
+		super("res/images/laser.png", pos_x, pos_y, 10);
 		this.angle = angle;
 		this.image.rotate(angle-90);
 	}

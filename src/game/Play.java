@@ -13,8 +13,6 @@ import objects.*;
 
 import java.util.*;
 
-import org.newdawn.slick.state.*;
-
 public class Play extends BasicGameState{
 	
 	public Play(int state) {
@@ -62,17 +60,13 @@ public class Play extends BasicGameState{
 		player.checkInputs(gc.getInput());
 		
 
-		try {
-			if(System.currentTimeMillis() > (lastZombie + nextZombieDistance)) {
-				Play.gameObjects.add(new Zombie());
-				
-				lastZombie = System.currentTimeMillis();
+		if(System.currentTimeMillis() > (lastZombie + nextZombieDistance)) {
+			Play.gameObjects.add(new Zombie());
+			
+			lastZombie = System.currentTimeMillis();
 
-				nextZombieDistance = (int) 200 + (1000* 10/(Zombie.count + 1));
-				System.out.println(nextZombieDistance);
-			}
-		} catch (SlickException e) {
-			e.printStackTrace();
+			nextZombieDistance = (int) 200 + (1000* 10/(Zombie.count + 1));
+			System.out.println(nextZombieDistance);
 		}
 		
 		for(GameObject gameObject : Play.gameObjects) {
@@ -105,34 +99,30 @@ public class Play extends BasicGameState{
 			neuesPowerUpGefunden = true;
 			Random rand = new Random();
 			int i = rand.nextInt(Game.NUMBER_OF_POWERUPS);
-			try{
-				switch (i){
-					case 0:
-						if((Play.player.getLifes() + HeartPowerUp.heartsOnScreen) >= 5) {
-							neuesPowerUpGefunden = false; 
-							break;
-						}
-						gameObjects.add(new HeartPowerUp());
+			switch (i){
+				case 0:
+					if((Play.player.getLifes() + HeartPowerUp.heartsOnScreen) >= 5) {
+						neuesPowerUpGefunden = false; 
 						break;
-					case 1: 
-						gameObjects.add(new FreezePowerUp()); 
+					}
+					gameObjects.add(new HeartPowerUp());
+					break;
+				case 1: 
+					gameObjects.add(new FreezePowerUp()); 
+					break;
+				case 2: 
+					gameObjects.add(new KillAllPowerUp()); 
+					break;
+				case 3: 
+					if(player.shots + ShootPowerUp.shotsOnScreen >= 3) {
+						neuesPowerUpGefunden = false; 
 						break;
-					case 2: 
-						gameObjects.add(new KillAllPowerUp()); 
-						break;
-					case 3: 
-						if(player.shots + ShootPowerUp.shotsOnScreen >= 3) {
-							neuesPowerUpGefunden = false; 
-							break;
-						}	
-						gameObjects.add(new ShootPowerUp()); 
-						break;
-					case 4:
-						gameObjects.add(new SpeedPowerUp());
-						break;
-				}
-			} catch (SlickException e){
-				e.printStackTrace();
+					}	
+					gameObjects.add(new ShootPowerUp()); 
+					break;
+				case 4:
+					gameObjects.add(new SpeedPowerUp());
+					break;
 			}
 		} while (!neuesPowerUpGefunden);
 	}

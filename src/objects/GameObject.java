@@ -22,8 +22,12 @@ public class GameObject {
 	// --- Image change end	
 	protected Shape hitbox;
 
-	public GameObject(Image image, float pos_x, float pos_y, float speed) {
-		this.image = image;
+	public GameObject(String imagePfad, float pos_x, float pos_y, float speed) {
+		try {
+			this.image = new Image(imagePfad);
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
 		// For Image Change ---
 		this.oldImage = image;
 		// --- Image change end
