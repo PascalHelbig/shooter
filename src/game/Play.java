@@ -68,7 +68,7 @@ public class Play extends BasicGameState{
 				
 				lastZombie = System.currentTimeMillis();
 
-				nextZombieDistance = (int) 300 + (1000* 10/(Zombie.count + 1));
+				nextZombieDistance = (int) 200 + (1000* 10/(Zombie.count + 1));
 				System.out.println(nextZombieDistance);
 			}
 		} catch (SlickException e) {
