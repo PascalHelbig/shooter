@@ -36,7 +36,7 @@ public class Play extends BasicGameState{
 		nextZombieDistance = 0;
 		startTime = System.currentTimeMillis();
 		Zombie.count = Game.START_ZOMBIES;
-		resetPowerupCounter();
+		PowerUp.countPowerUpsOnScreen = 0;
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg,
@@ -96,7 +96,7 @@ public class Play extends BasicGameState{
 	
 	public static void createPowerUp(){
 		boolean neuesPowerUpGefunden;
-		if (getPowerupCounter() < Game.MAX_POWERUP_ON_SCREEN){
+		if (PowerUp.countPowerUpsOnScreen < Game.MAX_POWERUP_ON_SCREEN){
 			do {
 				neuesPowerUpGefunden = true;
 				Random rand = new Random();
@@ -129,25 +129,9 @@ public class Play extends BasicGameState{
 			} while (!neuesPowerUpGefunden);
 		}
 	}
-
-	public static void incPowerupCounter(){
-		powerupsOnScreen++;
-	}
 	
-	public static void decPowerupCounter(){
-		powerupsOnScreen--;
-	}
-	
-	public static void resetPowerupCounter(){
-		powerupsOnScreen=0;
-	}
-	
-	public static int getPowerupCounter(){
-		return powerupsOnScreen;
-	}
 	
 	private int state;
-	private static int powerupsOnScreen =0;
 	public static Score scores = new Score();
 	public static int highscore = 0;
 	public static boolean playerDead = false;
