@@ -4,6 +4,7 @@ import game.Game;
 import game.Play;
 import objects.GameObject;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -48,7 +49,6 @@ public class Zombie extends GameObject {
 		if(intersects(Play.player)) {
 			Play.player.loseHeart();
 			Play.player.resetShots();
-
 		}
 	}
 	
@@ -66,7 +66,7 @@ public class Zombie extends GameObject {
 		Play.scores.addScore();
 		Play.scores.addMulti();
 		
-		if((killCounter % 3) == 0) {
+		if((killCounter % 10) == 0) {
 			Play.createPowerUp();			
 		}
 	}		

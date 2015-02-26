@@ -24,13 +24,15 @@ public class GameOver extends BasicGameState{
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.drawString("Game Over...\n\nDein Score: " + Play.scores.getScore()
 		+"\nHighscore: " + Play.highscore + newHigh
+		+"\n\nShots verfehlt: " + Play.misssedShots
 		+"\nZombies getötet: " + Zombie.killCounter
-		+"\n\nDrücke Leertaste oder Controller 'X' um fortzufahren", 100, 300);
+		+"\nTrefferquote: " + (float)((float)Zombie.killCounter/((float)Zombie.killCounter + (float)Play.misssedShots))*100 + "%"
+		+"\n\nDrücke Escape oder Controller 'X' um fortzufahren", 100, 250);
 		g.setBackground(Color.black);
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int arg2) 	throws SlickException {
-		if(gc.getInput().isKeyPressed(Input.KEY_SPACE) || gc.getInput().isControlPressed(6, Game.CONTROLLER_PORT)) {
+		if(gc.getInput().isKeyPressed(Input.KEY_ESCAPE) || gc.getInput().isControlPressed(6, Game.CONTROLLER_PORT)) {
 			sbg.enterState(Game.MENU, new FadeOutTransition(Color.white), new FadeInTransition(Color.white));
 		}
 	}

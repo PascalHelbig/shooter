@@ -24,6 +24,7 @@ public class Shot extends GameObject {
 			}
 		}
 		if (outOfField()){
+			Play.misssedShots++;
 			Play.toDeleteObjects.add(this);
 		}
 		
