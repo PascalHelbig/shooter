@@ -15,8 +15,9 @@ import java.util.*;
 
 public class Play extends BasicGameState{
 	
-	public Play(int state) {
+	public Play(int state, int converge) {
 		this.state = state;
+		this.converge= converge;
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg) {
@@ -72,7 +73,7 @@ public class Play extends BasicGameState{
 			
 			lastZombie = System.currentTimeMillis();
 
-			nextZombieDistance = (int) 200 + (1000* 10/(Zombie.count + 1));
+			nextZombieDistance = (int) this.converge + (1000* 10/(Zombie.count + 1));
 		}
 		
 		for(GameObject gameObject : Play.gameObjects) {
@@ -137,6 +138,7 @@ public class Play extends BasicGameState{
 	
 	
 	private int state;
+	private int converge;
 	public static Score scores = new Score();
 	public static int highscore = 0;
 	public static boolean playerDead = false;

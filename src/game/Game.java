@@ -23,11 +23,17 @@ public class Game extends StateBasedGame{
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
 		addState(new Menu(MENU));
-		addState(new Play(PLAY));		
+		addState(new Play(PLAY_EASY,400));	
+		addState(new Play(PLAY_MEDIUM,200));
+		addState(new Play(PLAY_HARD,100));
+		addState(new Play(PLAY_ULTRA,0));
 		addState(new GameOver(GAME_OVER));	
 	}
 
 	public static final int MENU = 0;
-	public static final int PLAY = 1;
-	public static final int GAME_OVER= 2;
+	public static final int PLAY_EASY = 1;
+	public static final int PLAY_MEDIUM = 2;
+	public static final int PLAY_HARD = 3;
+	public static final int PLAY_ULTRA = 4;
+	public static final int GAME_OVER= 5;
 }
