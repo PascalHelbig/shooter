@@ -28,9 +28,7 @@ public class GameObject {
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
-		// For Image Change ---
-		this.oldImage = image;
-		// --- Image change end
+		
 		this.pos_x = pos_x;
 		this.pos_y = pos_y;
 		this.alt_pos_x = pos_x;
@@ -53,6 +51,8 @@ public class GameObject {
 			this.speed -= speed_change;
 			this.speed_change = 0;
 		}
+		
+		updateImage();
 	}
 		
 	protected void moveUp() {
@@ -146,6 +146,7 @@ public class GameObject {
 	// For Image Change ---
 	public void changeImage(String newImage, long duration){
 		try {
+			this.oldImage = image;
 			this.image = new Image(newImage);
 			this.image.rotate(this.angle);
 		} catch (SlickException e) {
@@ -154,15 +155,11 @@ public class GameObject {
 		this.time_image_change_ends = System.currentTimeMillis() + duration;
 	}
 	
-	public boolean updateImage(boolean condition){
-		if(System.currentTimeMillis() > this.time_image_change_ends && condition) {
+	public void updateImage(){
+		// Wenn altes Bild vorhanden und Zeit abglaufen:
+		if(this.oldImage != null && System.currentTimeMillis() > this.time_image_change_ends) {
 			this.image = this.oldImage;
-			return false;
-		} else if(condition){
-			return true;
-		} else {
-			return false;
+			this.oldImage = null;
 		}
 	}
-	// --- Image Change end
 }

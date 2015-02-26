@@ -11,10 +11,7 @@ public class FreezePowerUp extends PowerUp {
 	protected void use() {
 		for(GameObject gameObject : Play.gameObjects) {
 			if (gameObject instanceof Zombie) {
-				// For Image Change ---
 				gameObject.changeImage("res/images/freezedZombie.png",10000);
-				((Zombie) gameObject).freezed = true;
-				// --- Image change end
 				gameObject.changeSpeed(-gameObject.speed, 10000);
 			}
 		}
