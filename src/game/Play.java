@@ -95,7 +95,7 @@ public class Play extends BasicGameState{
 	
 	public static void createPowerUp(){
 		boolean neuesPowerUpGefunden;
-		if (getPowerupCounter() <= Game.MAX_POWERUP_ON_SCREEN){
+		if (getPowerupCounter() < Game.MAX_POWERUP_ON_SCREEN){
 			incPowerupCounter();
 			System.out.println("create: "+getPowerupCounter());
 		do {
