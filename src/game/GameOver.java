@@ -28,12 +28,12 @@ public class GameOver extends BasicGameState{
 		+"\n\nShots verfehlt: " + Shot.misssedShots
 		+"\nZombies getötet: " + Zombie.killCounter
 		+"\nTrefferquote: " + (float)((float)Zombie.killCounter/((float)Zombie.killCounter + (float)Shot.misssedShots))*100 + "%"
-		+"\n\nDrücke Escape oder Controller 'X' um fortzufahren", 100, 250);
+		+"\n\nDrücke Escape oder Controller 'o' um fortzufahren", 100, 250);
 		g.setBackground(Color.black);
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int arg2) 	throws SlickException {
-		if(gc.getInput().isKeyPressed(Input.KEY_ESCAPE) || gc.getInput().isControlPressed(6, Game.CONTROLLER_PORT)) {
+		if(gc.getInput().isKeyPressed(Input.KEY_ESCAPE) || gc.getInput().isControlPressed(5, Game.CONTROLLER_PORT)) {
 			sbg.enterState(Game.MENU, new FadeOutTransition(Color.white), new FadeInTransition(Color.white));
 		}
 	}
