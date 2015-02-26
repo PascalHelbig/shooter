@@ -17,6 +17,5 @@ public static int shotsOnScreen = 0;
 	protected void use() {
 		Play.player.shots++;
 		shotsOnScreen--;
-		Play.player.pickUpShotTime = System.currentTimeMillis();
 	}
 }

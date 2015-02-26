@@ -37,7 +37,9 @@ public class Play extends BasicGameState{
 		super.enter(container, game);
 		nextZombieDistance = 0;
 		startTime = System.currentTimeMillis();
-		Zombie.count = Game.START_ZOMBIES;
+		Zombie.count = 0;
+		gameObjects.add(new FreezePowerUp());
+		gameObjects.add(new FreezePowerUp()); 
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg,
@@ -54,8 +56,6 @@ public class Play extends BasicGameState{
 
 	public void update(GameContainer gc, StateBasedGame sbg, int arg1) {
 		
-		player.checkShotItemTime();
-		
 		if(player.isPlayerDead()){
 			sbg.enterState(Game.GAME_OVER,new FadeOutTransition(Color.white), new FadeInTransition(Color.white));
 		}
@@ -68,7 +68,7 @@ public class Play extends BasicGameState{
 				
 				lastZombie = System.currentTimeMillis();
 
-				nextZombieDistance = (int) 200 + (1000* 10/(Zombie.count + 1));
+				nextZombieDistance = (int) 300 + (1000* 10/(Zombie.count + 1));
 				System.out.println(nextZombieDistance);
 			}
 		} catch (SlickException e) {
