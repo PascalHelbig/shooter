@@ -47,7 +47,9 @@ public class Play extends BasicGameState{
 			gameObject.render();
 			//g.draw(gameObject.getHitbox());
 		}
-		
+		if(highscore < scores.getScore()){
+			highscore = scores.getScore();
+		}
 		g.drawString("Score: " + scores.getScore() + "    Multi: " + scores.getMulti()+"x   Highscore: "+highscore, 120, 10);
 	}
 
