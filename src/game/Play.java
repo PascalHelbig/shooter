@@ -96,6 +96,7 @@ public class Play extends BasicGameState{
 	
 	public static void createPowerUp(){
 		boolean neuesPowerUpGefunden;
+		if (getPowerupCounter() <= Game.MAX_POWERUP_ON_SCREEN){
 		do {
 			neuesPowerUpGefunden = true;
 			Random rand = new Random();
@@ -123,9 +124,23 @@ public class Play extends BasicGameState{
 					break;
 			}
 		} while (!neuesPowerUpGefunden);
+	  }
 	}
 
+	public static void incPowerupCounter(){
+		powerupsOnScreen++;
+	}
+	
+	public static void decPowerupCounter(){
+		powerupsOnScreen++;
+	}
+	
+	public static int getPowerupCounter(){
+		return powerupsOnScreen;
+	}
+	
 	private int state;
+	private static int powerupsOnScreen =0;
 	public static Score scores = new Score();
 	public static int highscore = 0;
 	public static boolean playerDead = false;
