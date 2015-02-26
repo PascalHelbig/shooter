@@ -20,6 +20,7 @@ public class Menu extends BasicGameState{
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+		g.setColor(Color.white);
 		g.drawString("Schwierigkeit auswählen...\nLeicht - 1 - X\nMedium - 2 - Kreis\nHard - 3 - Dreieck\nDu wirst nicht überleben... - 4 - Viereck\n", 100, 300);
 	}
 

@@ -43,7 +43,15 @@ public class Play extends BasicGameState{
 
 	public void render(GameContainer gc, StateBasedGame sbg,
 			Graphics g) {
-		g.setBackground(Color.gray);
+		g.setColor(Color.white);
+		
+		if (Play.player.playerHit){
+			g.setBackground(Color.red);
+			Play.player.playerHit = false;
+		} else {
+			g.setBackground(Color.gray);
+		}
+		
 		// Render alle GameObjecte
 		for(GameObject gameObject : Play.gameObjects) {
 			gameObject.render();
