@@ -65,7 +65,7 @@ public class Zombie extends GameObject {
 		Play.scores.addScore();
 		Play.scores.addMulti();
 		
-		if((killCounter % 10) == 0) {
+		if((killCounter % 3) == 0) {
 			Play.createPowerUp();			
 		}
 	}		

@@ -24,7 +24,6 @@ public class Shot extends GameObject {
 			}
 		}
 		if (outOfField()){
-			System.out.println("drauﬂen");
 			Play.toDeleteObjects.add(this);
 		}
 		

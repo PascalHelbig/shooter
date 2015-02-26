@@ -24,6 +24,7 @@ public class PowerUp extends GameObject {
 			use();
 			Play.toDeleteObjects.add(this);
 			Play.decPowerupCounter();
+			System.out.println("destroy: "+Play.getPowerupCounter());
 		}
 	}
 	
