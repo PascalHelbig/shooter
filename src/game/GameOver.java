@@ -1,5 +1,6 @@
 package game;
 
+import objects.Shot;
 import objects.Zombie;
 
 import org.newdawn.slick.Color;
@@ -24,9 +25,9 @@ public class GameOver extends BasicGameState{
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.drawString("Game Over...\n\nDein Score: " + Play.scores.getScore()
 		+"\nHighscore: " + Play.highscore + newHigh
-		+"\n\nShots verfehlt: " + Play.misssedShots
+		+"\n\nShots verfehlt: " + Shot.misssedShots
 		+"\nZombies getötet: " + Zombie.killCounter
-		+"\nTrefferquote: " + (float)((float)Zombie.killCounter/((float)Zombie.killCounter + (float)Play.misssedShots))*100 + "%"
+		+"\nTrefferquote: " + (float)((float)Zombie.killCounter/((float)Zombie.killCounter + (float)Shot.misssedShots))*100 + "%"
 		+"\n\nDrücke Escape oder Controller 'X' um fortzufahren", 100, 250);
 		g.setBackground(Color.black);
 	}

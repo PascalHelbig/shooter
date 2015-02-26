@@ -24,12 +24,11 @@ public class Shot extends GameObject {
 			}
 		}
 		if (outOfField()){
-			Play.misssedShots++;
+			misssedShots++;
 			Play.toDeleteObjects.add(this);
 		}
 		
 		super.update();
 	}
-
-	
+	public static int misssedShots = 0;
 }

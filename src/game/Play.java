@@ -141,7 +141,6 @@ public class Play extends BasicGameState{
 	private int converge;
 	public static Score scores = new Score();
 	public static int highscore = 0;
-	public static int misssedShots = 0;
 	public static boolean playerDead = false;
 	public static Player player;
 	public static List<objects.GameObject> toDeleteObjects = new ArrayList<GameObject>();
