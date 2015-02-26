@@ -27,6 +27,8 @@ public class Play extends BasicGameState{
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
 		scores.resetScore();
 		gameObjects.clear();
+		GameOver.newHigh = "";
+		Zombie.killCounter = 0;
 		player = new Player(100, 100, 3);
 		gameObjects.add(player);
 		for(int i = 0; i < Game.START_ZOMBIES; i++) {
@@ -49,6 +51,7 @@ public class Play extends BasicGameState{
 		}
 		if(highscore < scores.getScore()){
 			highscore = scores.getScore();
+			GameOver.newHigh = " - Neuer Highscore!!!!";
 		}
 		g.drawString("Score: " + scores.getScore() + "    Multi: " + scores.getMulti()+"x   Highscore: "+highscore, 120, 10);
 	}
