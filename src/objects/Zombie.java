@@ -2,6 +2,7 @@ package objects;
 
 import game.Game;
 import game.Play;
+import objects.GameObject;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -11,7 +12,7 @@ public class Zombie extends GameObject {
 	float playerY;
 	float zombieX;
 	
-	private static int killCounter = 0;
+	public static int killCounter = 0;
 	public static int count = 0;
 	
 	float lastHeartLost;

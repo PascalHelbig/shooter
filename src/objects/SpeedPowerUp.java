@@ -9,6 +9,6 @@ public class SpeedPowerUp extends PowerUp {
 	}
 
 	protected void use() {
-		Play.player.changeSpeed(Play.player.speed/2, 3000);
+		Play.player.changeSpeed((float)(Play.player.speed*0.6), 3000);
 	}
 }
