@@ -132,10 +132,12 @@ public class GameObject {
 	public void destroy() {
 	}
 
-	public void changeSpeed(float change, int duration) {	
+	public void changeSpeed(float change, int duration) {
+		if (this.speed <= 3){
 		this.speed_change += change;
 		this.speed += change;
 		this.time_speed_change_ends = System.currentTimeMillis() + duration;
+		}
 	}
 	// For Image Change ---
 	public void changeImage(String newImage, long duration){
