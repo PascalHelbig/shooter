@@ -24,6 +24,7 @@ public class GameOver extends BasicGameState{
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		String trefferquote = String.format("%.2f", ((float)Zombie.killCounter/((float)Zombie.killCounter + (float)Shot.misssedShots))*100);
+		g.setColor(Color.red);
 		g.drawString("Game Over...\n\nDein Score: " + Play.scores.getScore()
 		+"\nHighscore: " + Play.highscore + newHigh
 		+"\n\nShots verfehlt: " + Shot.misssedShots

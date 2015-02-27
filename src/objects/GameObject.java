@@ -3,10 +3,12 @@ package objects;
 import game.Game;
 
 import org.newdawn.slick.*;
+import org.newdawn.slick.command.BasicCommand;
 import org.newdawn.slick.geom.*;
 
 public class GameObject {
 
+	public static BasicCommand command;
 	protected Image image;
 	protected float pos_x;
 	protected float pos_y;

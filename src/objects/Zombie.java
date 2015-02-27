@@ -7,6 +7,7 @@ import objects.GameObject;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.command.BasicCommand;
 
 public class Zombie extends GameObject {
 	float playerX;
@@ -38,6 +39,7 @@ public class Zombie extends GameObject {
 		
 		count++;
 	}
+
 	
 	public void update() {
 		// For Image Change ---
@@ -49,6 +51,7 @@ public class Zombie extends GameObject {
 		if(intersects(Play.player)) {
 			Play.player.loseHeart();
 			Play.player.resetShots();
+			Play.player.playerHit= true;
 		}
 	}
 	
