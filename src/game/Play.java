@@ -18,6 +18,7 @@ public class Play extends BasicGameState{
 	public Play(int state, int converge) {
 		this.state = state;
 		this.converge= converge;
+		//highscore[state] = 0;
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg) {
@@ -28,7 +29,7 @@ public class Play extends BasicGameState{
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
 		scores.resetScore();
 		gameObjects.clear();
-		GameOver.newHigh = "";
+		GameOver.newHigh = null;
 		Zombie.killCounter = 0;
 		player = new Player(100, 100, 3);
 		gameObjects.add(player);
@@ -39,6 +40,7 @@ public class Play extends BasicGameState{
 		nextZombieDistance = 0;
 		Zombie.count = Game.START_ZOMBIES;
 		PowerUp.countPowerUpsOnScreen = 0;
+		GameOver.newHigh = "";
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg,
@@ -57,11 +59,11 @@ public class Play extends BasicGameState{
 			gameObject.render();
 			//g.draw(gameObject.getHitbox());
 		}
-		if(highscore < scores.getScore()){
-			highscore = scores.getScore();
-			GameOver.newHigh = " - Neuer Highscore!!!!";
+		if(highscore.get(getID()) < scores.getScore()){
+			highscore.put(getID(), scores.getScore());
+			GameOver.newHigh = "Neuer Highscore!!!!";
 		}
-		g.drawString("Score: " + scores.getScore() + "    Multi: " + scores.getMulti()+"x   Highscore: "+highscore, 120, 10);
+		g.drawString("Score: " + scores.getScore() + "    Multi: " + scores.getMulti()+"x   Highscore: "+highscore.get(getID()), 120, 10);
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int arg1) {
@@ -147,7 +149,8 @@ public class Play extends BasicGameState{
 	private int state;
 	private int converge;
 	public static Score scores = new Score();
-	public static int highscore = 0;
+	//public static int highscore[];
+	public static HashMap<Integer, Integer> highscore = new HashMap<Integer, Integer>();
 	public static boolean playerDead = false;
 	public static Player player;
 	public static List<objects.GameObject> toDeleteObjects = new ArrayList<GameObject>();

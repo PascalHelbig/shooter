@@ -18,6 +18,10 @@ public class Game extends StateBasedGame{
 	
 	public Game(String name) {
 		super(name);
+		Play.highscore.put(PLAY_EASY, 0);
+		Play.highscore.put(PLAY_MEDIUM, 0);
+		Play.highscore.put(PLAY_HARD, 0);
+		Play.highscore.put(PLAY_ULTRA , 0);
 	}
 
 	@Override
