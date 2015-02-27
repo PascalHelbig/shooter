@@ -1,5 +1,7 @@
 package game;
 
+import java.util.HashMap;
+
 import objects.Shot;
 import objects.Zombie;
 
@@ -25,12 +27,15 @@ public class GameOver extends BasicGameState{
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		String trefferquote = String.format("%.2f", ((float)Zombie.killCounter/((float)Zombie.killCounter + (float)Shot.misssedShots))*100);
 		g.setColor(Color.red);
-		g.drawString("Game Over...\n\nDein Score: " + Play.scores.getScore()
-		+"\nHighscore: " + Play.highscore + newHigh
+		g.drawString("Game Over...\n\n"+newHigh+"\n\nDein Score: " + Play.scores.getScore() + "\n"
+		+"\nHighscore (easy): " + Play.highscore.get(Game.PLAY_EASY)
+		+"\nHighscore (medium): " + Play.highscore.get(Game.PLAY_MEDIUM)
+		+"\nHighscore (hard): " + Play.highscore.get(Game.PLAY_HARD)
+		+"\nHighscore (ultra): " + Play.highscore.get(Game.PLAY_ULTRA)
 		+"\n\nShots verfehlt: " + Shot.misssedShots
 		+"\nZombies getötet: " + Zombie.killCounter
 		+"\nTrefferquote: " + trefferquote + "%"
-		+"\n\nDrücke Escape oder Controller 'o' um fortzufahren", 100, 250);
+		+"\n\nDrücke Escape oder Controller 'o' um fortzufahren", 100, 200);
 		g.setBackground(Color.black);
 	}
 
